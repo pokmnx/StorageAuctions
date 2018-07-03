@@ -30,6 +30,8 @@ public class ProgressView {
         mContext = context;
     }
 
+    Context getContext() {return mContext;}
+
     void show(Context context) {
         mContext = context;
         show();
