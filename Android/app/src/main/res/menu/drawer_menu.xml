@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/home_menu"
+            android:title="HOME"
+            />
+        <item
+            android:id="@+id/auctions_menu"
+            android:title="YOUR AUCTIONS"
+            />
+        <item
+            android:id="@+id/list_auction_menu"
+            android:title="LIST AN AUCTION"
+            />
+        <item
+            android:id="@+id/add_facility_menu"
+            android:title="ADD NEW FACILITY"
+            />
+        <item
+            android:id="@+id/report_menu"
+            android:title="REPORTS"
+            />
+    </group>
+
+</menu>
