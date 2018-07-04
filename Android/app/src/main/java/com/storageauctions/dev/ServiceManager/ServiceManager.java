@@ -54,6 +54,27 @@ public class ServiceManager {
         postRequest(url, params, handler);
     }
 
+    public void addNewFacility(String name, String email, String website, String phone, String taxRate, String commissionRate, String terms, String[] address, JsonHttpResponseHandler handler) {
+        String url = endPoint + "/facility/set";
+        RequestParams params = new RequestParams();
+        params.add("name", name);
+        params.add("website", website);
+        params.add("email", email);
+        params.add("commission_rate", commissionRate);
+        params.add("taxrate", taxRate);
+        params.add("terms", terms);
+        params.add("lat", address[0]);
+        params.add("lon", address[1]);
+        params.add("acc", address[2]);
+        params.add("phone", phone);
+        params.add("address", address[3]);
+        params.add("city", address[4]);
+        params.add("postal_code", address[5]);
+        params.add("state_code", address[6]);
+
+        postRequest(url, params, handler);
+    }
+
     public void getRequest(String url, JsonHttpResponseHandler handler) {
         client.addHeader("Content-Type", "application/x-www-form-urlencoded");
         client.addHeader("Authorization", "Basic ZGV2OnNhc2E=");

@@ -43,7 +43,7 @@
             app:layout_constraintTop_toTopOf="parent"></LinearLayout>
 
         <TextView
-            android:id="@+id/textView8"
+            android:id="@+id/map_address"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginBottom="8dp"
@@ -59,25 +59,28 @@
             app:layout_constraintTop_toTopOf="parent" />
     </android.support.constraint.ConstraintLayout>
 
-    <com.google.android.gms.maps.MapView
+    <FrameLayout
         android:id="@+id/mapView"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_marginBottom="16dp"
         android:layout_marginEnd="32dp"
         android:layout_marginLeft="32dp"
         android:layout_marginRight="32dp"
         android:layout_marginStart="32dp"
         android:layout_marginTop="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/map_continue_btn"
         app:layout_constraintDimensionRatio="w,1:1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/map_continue_btn"
         android:layout_width="0dp"
         android:layout_height="40dp"
-        android:layout_marginBottom="88dp"
+        android:layout_marginBottom="72dp"
         android:layout_marginEnd="32dp"
         android:layout_marginLeft="32dp"
         android:layout_marginRight="32dp"

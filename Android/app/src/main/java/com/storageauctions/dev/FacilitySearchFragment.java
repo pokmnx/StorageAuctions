@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -28,6 +29,8 @@ import javax.net.ssl.HttpsURLConnection;
 
 public class FacilitySearchFragment extends Fragment {
 
+    private String mAddress;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -40,13 +43,26 @@ public class FacilitySearchFragment extends Fragment {
         searchBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                mAddress = addressField.getText().toString();
                 new DataLongOperationAsynchTask().execute(addressField.getText().toString());
-
             }
         });
 
         return view;
+    }
+
+    public void goToMapView(double lat, double lon, JSONObject addressInfo) {
+        FacilityMapFragment fragment = new FacilityMapFragment();
+        fragment.mLat = lat;
+        fragment.mLon = lon;
+        fragment.mAddress = mAddress;
+        fragment.mAddressInfo = addressInfo;
+
+        if (fragment != null) {
+            FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
+            ft.replace(R.id.content_frame, fragment);
+            ft.commit();
+        }
     }
 
     private class DataLongOperationAsynchTask extends AsyncTask<String, Void, String[]> {
@@ -88,6 +104,12 @@ public class FacilitySearchFragment extends Fragment {
 
                 Log.d("latitude", "" + lat);
                 Log.d("longitude", "" + lng);
+
+
+                JSONObject addressComponent = ((JSONArray)jsonObject.get("results")).getJSONObject(0);
+
+                goToMapView(lat, lng, addressComponent);
+
             } catch (JSONException e) {
                 e.printStackTrace();
             }

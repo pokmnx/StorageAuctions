@@ -70,8 +70,7 @@ public class MainActivity extends AppCompatActivity {
                     } else if (menuItem.getItemId() == R.id.list_auction_menu) {
 
                     } else if (menuItem.getItemId() == R.id.add_facility_menu) {
-                        // fragment = new FacilitySearchFragment();
-                        fragment = new FacilityMapFragment();
+                        fragment = new FacilitySearchFragment();
                     } else {
 
                     }
