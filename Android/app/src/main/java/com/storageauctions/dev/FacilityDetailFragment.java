@@ -100,7 +100,7 @@ public class FacilityDetailFragment extends Fragment {
                             @Override
                             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                                 ProgressView.sharedView().dismiss();
-                                Log.d("FacilityCreationSuccess", response.toString());
+                                Log.d("FacilityCreatio Success", response.toString());
                             }
                         });
             }

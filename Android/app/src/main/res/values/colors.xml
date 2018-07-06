@@ -7,5 +7,5 @@
     <color name="textColorPrimary">#FFFFFF</color>
     <color name="windowBackground">#f7f7f7</color>
     <color name="navigationBarColor">#FFFFFF</color>
-    <color name="disabled">#AAAAAA</color>
+    <color name="disabled">#aaaaaa</color>
 </resources>
