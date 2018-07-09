@@ -68,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
                     } else if (menuItem.getItemId() == R.id.auctions_menu) {
                         fragment = new AuctionListFragment();
                     } else if (menuItem.getItemId() == R.id.list_auction_menu) {
-
+                        fragment = new CreateAuctionFragment();
                     } else if (menuItem.getItemId() == R.id.add_facility_menu) {
                         fragment = new FacilitySearchFragment();
                     } else {

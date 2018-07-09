@@ -38,6 +38,7 @@ public class MainFragment extends Fragment {
                                 fragment = new AuctionListFragment();
                                 break;
                             case R.id.search_tab:
+                                fragment = new FacilityListFragment();
                                 break;
                         }
 

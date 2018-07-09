@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -101,6 +102,14 @@ public class FacilityDetailFragment extends Fragment {
                             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                                 ProgressView.sharedView().dismiss();
                                 Log.d("FacilityCreatio Success", response.toString());
+
+                                FacilityListFragment fragment = new FacilityListFragment();
+
+                                if (fragment != null) {
+                                    FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
+                                    ft.replace(R.id.content_frame, fragment);
+                                    ft.commit();
+                                }
                             }
                         });
             }

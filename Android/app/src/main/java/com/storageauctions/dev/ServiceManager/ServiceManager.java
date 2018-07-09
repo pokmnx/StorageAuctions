@@ -75,6 +75,43 @@ public class ServiceManager {
         postRequest(url, params, handler);
     }
 
+    public void createAuction(AuctionRequest request, JsonHttpResponseHandler handler) {
+        String url = endPoint + "/auction/add";
+        RequestParams params = new RequestParams();
+
+        params.add("amount_owed", request.amount_owed);
+        params.add("alt_unit_number", request.alt_unit_number);
+        params.add("reserve", request.reserve);
+        params.add("time_end", request.time_end);
+        params.add("terms", request.terms);
+        params.add("prebid_close", request.prebid_close);
+        params.add("lock_tag", request.lock_tag);
+        params.add("fees", request.fees);
+        params.add("batch_email", request.batch_email);
+        params.add("cleanout_other", request.cleanout_other);
+        params.add("payment", request.payment);
+        params.add("time_st_zone", request.time_st_zone);
+        params.add("cleanout", request.cleanout);
+        params.add("access", request.access);
+        params.add("auction_type", request.auction_type);
+        params.add("time_start", request.time_start);
+        params.add("facility_id", request.facility_id);
+        params.add("unit_size", request.unit_size);
+        params.add("descr", request.descr);
+        params.add("unit_number", request.unit_number);
+        params.add("time_end_zone", request.time_end_zone);
+        params.add("save_terms", request.save_terms);
+        params.add("payment_other", request.payment_other);
+        params.add("tenant_name", request.tenant_name);
+
+        postRequest(url, params, handler);
+    }
+
+    public void getAllFacilities(JsonHttpResponseHandler handler) {
+        String url = endPoint + "/user/facility/get";
+        getRequest(url, handler);
+    }
+
     public void getRequest(String url, JsonHttpResponseHandler handler) {
         client.addHeader("Content-Type", "application/x-www-form-urlencoded");
         client.addHeader("Authorization", "Basic ZGV2OnNhc2E=");
