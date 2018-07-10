@@ -9,6 +9,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
+
+import com.squareup.picasso.Picasso;
 
 public class HomeFragment extends Fragment {
 
@@ -16,6 +19,9 @@ public class HomeFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
+
+        // ImageView background = (ImageView) view.findViewById(R.id.home_background);
+        // Picasso.get().load(R.drawable.first_auct_background).into(background);
 
         Button createAuctionBtn = (Button) view.findViewById(R.id.create_new_auction_btn);
         createAuctionBtn.setOnClickListener(new View.OnClickListener() {
