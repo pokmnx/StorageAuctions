@@ -61,7 +61,6 @@ public class CreateAuctionFragment extends Fragment {
 
     public String additionalInfo = "";
     public String termsCond = "";
-    public Facility selectedFacility;
 
     @Nullable
     @Override
@@ -69,6 +68,7 @@ public class CreateAuctionFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_create_auction, container, false);
 
         final Spinner facilitySpinner = (Spinner) view.findViewById(R.id.facility_spinner);
+        ProgressView.sharedView().show(getContext());
         ServiceManager.sharedManager().getAllFacilities(new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
@@ -372,7 +372,8 @@ public class CreateAuctionFragment extends Fragment {
         cancelAuctionBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getActivity().getSupportFragmentManager().beginTransaction().remove(self).commit();
+                // getActivity().getSupportFragmentManager().beginTransaction().remove(self).commit();
+                getActivity().getSupportFragmentManager().popBackStack();
             }
         });
 

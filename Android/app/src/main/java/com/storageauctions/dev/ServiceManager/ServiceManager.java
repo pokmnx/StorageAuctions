@@ -107,6 +107,11 @@ public class ServiceManager {
         postRequest(url, params, handler);
     }
 
+    public void getAllAuction(JsonHttpResponseHandler handler) {
+        String url = endPoint + "/user/selling";
+        getRequest(url, handler);
+    }
+
     public void getAllFacilities(JsonHttpResponseHandler handler) {
         String url = endPoint + "/user/facility/get";
         getRequest(url, handler);

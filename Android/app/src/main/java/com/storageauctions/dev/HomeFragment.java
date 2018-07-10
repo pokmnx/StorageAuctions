@@ -25,6 +25,7 @@ public class HomeFragment extends Fragment {
                 if (fragment != null) {
                     FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
                     ft.replace(R.id.content_frame, fragment);
+                    ft.addToBackStack(null);
                     ft.commit();
                 }
             }

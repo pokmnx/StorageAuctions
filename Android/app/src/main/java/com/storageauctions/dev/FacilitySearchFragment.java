@@ -60,7 +60,8 @@ public class FacilitySearchFragment extends Fragment {
 
         if (fragment != null) {
             FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
-            ft.replace(R.id.content_frame, fragment);
+            ft.add(R.id.content_frame, fragment);
+            ft.addToBackStack(null);
             ft.commit();
         }
     }

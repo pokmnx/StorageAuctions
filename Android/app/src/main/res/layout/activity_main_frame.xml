@@ -17,7 +17,7 @@
         android:layout_height="56dp"
         android:layout_gravity="bottom"
         app:itemBackground="@color/white"
-        app:itemIconTint="@color/colorPrimary"
+        app:itemIconTint="@drawable/drawer_item_color"
         app:itemTextColor="@color/white"
         app:menu="@menu/bottom_menu" />
 

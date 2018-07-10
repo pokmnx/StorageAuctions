@@ -65,6 +65,10 @@ public class MainActivity extends AppCompatActivity {
 
                     if (menuItem.getItemId() == R.id.home_menu) {
                         fragment = new HomeFragment();
+                        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+                        ft.replace(R.id.content_frame, fragment);
+                        ft.commit();
+                        return true;
                     } else if (menuItem.getItemId() == R.id.auctions_menu) {
                         fragment = new AuctionListFragment();
                     } else if (menuItem.getItemId() == R.id.list_auction_menu) {
@@ -77,8 +81,11 @@ public class MainActivity extends AppCompatActivity {
 
                     if (fragment != null) {
                         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-                        ft.replace(R.id.content_frame, fragment);
+                        ft.add(R.id.content_frame, fragment);
+                        ft.addToBackStack(null);
                         ft.commit();
+                        // ft.replace(R.id.content_frame, fragment);
+                        //ft.commit();
                     }
 
                     return true;
@@ -132,6 +139,12 @@ public class MainActivity extends AppCompatActivity {
                 return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onBackPressed() {
+        // super.onBackPressed();
+        getSupportFragmentManager().popBackStack();
     }
 
     void setupToolbar(){
