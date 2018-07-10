@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -27,6 +28,7 @@ import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.loopj.android.http.JsonHttpResponseHandler;
+import com.squareup.picasso.Picasso;
 import com.storageauctions.dev.ServiceManager.Facility;
 import com.storageauctions.dev.ServiceManager.ServiceManager;
 
@@ -210,7 +212,7 @@ public class FacilityListFragment extends Fragment {
                 });
             }
 */
-
+/*
             MapView mapView = (MapView) rowView.findViewById(R.id.facility_cell_map);
             mapView.onCreate(mSavedInstance);
             mapView.getMapAsync(new OnMapReadyCallback() {
@@ -233,6 +235,20 @@ public class FacilityListFragment extends Fragment {
                     }
                 }
             });
+*/
+
+            ImageView mapView = (ImageView) rowView.findViewById(R.id.facility_cell_map);
+            String getMapURL = "http://maps.googleapis.com/maps/api/staticmap?zoom=15&size=560x240&markers=size:mid|color:red|"
+                    + Double.toString(facility.lat)
+                    + ","
+                    + Double.toString(facility.lon)
+                    + "&sensor=false";
+
+            Picasso.get()
+                    .load(getMapURL)
+                    .resize(300, 300)
+                    .centerCrop()
+                    .into(mapView);
 
             return rowView;
         }

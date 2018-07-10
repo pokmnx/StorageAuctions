@@ -8,7 +8,7 @@
     >
 
 
-    <com.google.android.gms.maps.MapView
+    <ImageView
         android:id="@+id/facility_cell_map"
         android:layout_width="100dp"
         android:layout_height="100dp"
