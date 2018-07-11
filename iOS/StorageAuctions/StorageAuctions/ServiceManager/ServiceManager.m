@@ -250,7 +250,7 @@ NSString* baseURL = @"https://dev3.storageauctions.net/block";
                     auction.auction_id = (NSString*)[dic objectForKey:@"auction_id"];
                     auction.meta = [[AuctionMeta alloc] init];
                     NSDictionary* metaDic = [dic objectForKey:@"meta"];
-                    if (metaDic.count > 0) {
+                    if (metaDic != [NSNull null] && metaDic.count > 0) {
                         auction.meta.cleanout = [self getIntFrom:(NSNumber*)[metaDic objectForKey:@"cleanout"]];
                         auction.meta.cleanout_other = (NSString*)[metaDic objectForKey:@"cleanout_other"];
                         auction.meta.payment = [self getIntFrom:(NSNumber*)[metaDic objectForKey:@"payment"]];
