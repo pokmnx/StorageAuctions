@@ -31,6 +31,8 @@
 		8097B69E20DC0DF8006E5A2C /* FacilityFieldController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8097B69D20DC0DF8006E5A2C /* FacilityFieldController.m */; };
 		8097B6A120DC9F0F006E5A2C /* FacilityCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8097B6A020DC9F0F006E5A2C /* FacilityCell.m */; };
 		8097B6A420DCE0BB006E5A2C /* Facility.m in Sources */ = {isa = PBXBuildFile; fileRef = 8097B6A320DCE0BB006E5A2C /* Facility.m */; };
+		809C741D20F6863E002623FB /* AuctionDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 809C741C20F6863E002623FB /* AuctionDetailController.m */; };
+		809C742020F68660002623FB /* AuctionDetailImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 809C741F20F68660002623FB /* AuctionDetailImageCell.m */; };
 		80B9DE5420D5AAB500DC9ED6 /* AuthController.m in Sources */ = {isa = PBXBuildFile; fileRef = 80B9DE5320D5AAB500DC9ED6 /* AuthController.m */; };
 		80B9DE5720D5AAC100DC9ED6 /* LoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = 80B9DE5620D5AAC100DC9ED6 /* LoginController.m */; };
 		80B9DE5A20D5AAD100DC9ED6 /* SignupController.m in Sources */ = {isa = PBXBuildFile; fileRef = 80B9DE5920D5AAD100DC9ED6 /* SignupController.m */; };
@@ -92,6 +94,10 @@
 		8097B6A020DC9F0F006E5A2C /* FacilityCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FacilityCell.m; sourceTree = "<group>"; };
 		8097B6A220DCE0BB006E5A2C /* Facility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Facility.h; sourceTree = "<group>"; };
 		8097B6A320DCE0BB006E5A2C /* Facility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Facility.m; sourceTree = "<group>"; };
+		809C741B20F6863E002623FB /* AuctionDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuctionDetailController.h; sourceTree = "<group>"; };
+		809C741C20F6863E002623FB /* AuctionDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuctionDetailController.m; sourceTree = "<group>"; };
+		809C741E20F68660002623FB /* AuctionDetailImageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuctionDetailImageCell.h; sourceTree = "<group>"; };
+		809C741F20F68660002623FB /* AuctionDetailImageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuctionDetailImageCell.m; sourceTree = "<group>"; };
 		80B9DE5220D5AAB500DC9ED6 /* AuthController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuthController.h; sourceTree = "<group>"; };
 		80B9DE5320D5AAB500DC9ED6 /* AuthController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuthController.m; sourceTree = "<group>"; };
 		80B9DE5520D5AAC100DC9ED6 /* LoginController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginController.h; sourceTree = "<group>"; };
@@ -266,6 +272,10 @@
 				803E48BD20E4712E00FD3EB8 /* AuctionListController.m */,
 				803E48BF20E4719700FD3EB8 /* AuctionListCell.h */,
 				803E48C020E4719700FD3EB8 /* AuctionListCell.m */,
+				809C741B20F6863E002623FB /* AuctionDetailController.h */,
+				809C741C20F6863E002623FB /* AuctionDetailController.m */,
+				809C741E20F68660002623FB /* AuctionDetailImageCell.h */,
+				809C741F20F68660002623FB /* AuctionDetailImageCell.m */,
 			);
 			path = Auction;
 			sourceTree = "<group>";
@@ -452,6 +462,7 @@
 			files = (
 				80E6FCA920D9A28500CA1FE2 /* MenuController.m in Sources */,
 				8036042120E3893900F8239C /* RMPScrollingMenuBar.m in Sources */,
+				809C742020F68660002623FB /* AuctionDetailImageCell.m in Sources */,
 				803E48C720E4788B00FD3EB8 /* AuctionMeta.m in Sources */,
 				80E6FCA020D97B5600CA1FE2 /* AuctionController.m in Sources */,
 				8097B6A420DCE0BB006E5A2C /* Facility.m in Sources */,
@@ -462,6 +473,7 @@
 				8036042620E3893900F8239C /* UIViewController+RMPScrollingMenuBarControllerHelper.m in Sources */,
 				80B9DE5420D5AAB500DC9ED6 /* AuthController.m in Sources */,
 				80B9DE5A20D5AAD100DC9ED6 /* SignupController.m in Sources */,
+				809C741D20F6863E002623FB /* AuctionDetailController.m in Sources */,
 				80B9DE5720D5AAC100DC9ED6 /* LoginController.m in Sources */,
 				8097B6A120DC9F0F006E5A2C /* FacilityCell.m in Sources */,
 				8036042320E3893900F8239C /* RMPScrollingMenuBarControllerAnimator.m in Sources */,
