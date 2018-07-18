@@ -170,7 +170,7 @@ NSString* baseURL = @"https://dev3.storageauctions.net/block";
     }];
 }
 
-- (void) createAuction:(AuctionRequest*) request completion:(void (^)(BOOL bSuccess, NSString* error)) completion {
+- (void) createAuction:(AuctionRequest*) request completion:(void (^)(BOOL bSuccess, Auction* auction, NSString* error)) completion {
     NSString* url = [baseURL stringByAppendingString:@"/auction/add"];
     NSString* requestStr = [NSString stringWithFormat:@"amount_owed=%@&alt_unit_number=%@&reserve=%@&time_end=%@&terms=%@&prebid_close=%@&lock_tag=%@&fees=%@&batch_email=%@&cleanout_other=%@&payment=%@&time_st_zone=%@&cleanout=%@&access=%@&auction_type=%@&time_start=%@&facility_id=%@&unit_size=%@&descr=%@&unit_number=%@&time_end_zone=%@&save_terms=%@&payment_other=%@&tenant_name=%@", request.amount_owed, request.alt_unit_number, request.reserve, request.time_end, request.terms, request.prebid_close, request.lock_tag, request.fees, request.batch_email, request.cleanout_other, request.payment, request.time_st_zone, request.cleanout, request.access, request.auction_type, request.time_start, request.facility_id, request.unit_size, request.descr, request.unit_number, request.time_end_zone, request.save_terms, request.payment_other, request.tenant_name];
     NSData* body = [self getDataFrom:requestStr];
@@ -178,7 +178,10 @@ NSString* baseURL = @"https://dev3.storageauctions.net/block";
         if (!error) {
             NSLog(@"Reply JSON: %@", responseObject);
             if ([responseObject isKindOfClass:[NSDictionary class]]) {
-                completion(true, NULL);
+                
+                NSDictionary* dic = (NSDictionary*)responseObject;
+                Auction* auction = [self getAuctionFrom:dic];
+                completion(true, auction, NULL);
             }
         } else {
             NSLog(@"Add Facility Error: %@, %@, %@", error, response, responseObject);
@@ -192,19 +195,19 @@ NSString* baseURL = @"https://dev3.storageauctions.net/block";
             NSString* accessErrStr = [errDic objectForKey:@"access"];
             
             if (unitNumErrStr.length > 0) {
-                completion(false, unitNumErrStr);
+                completion(false, NULL, unitNumErrStr);
             } else if (altUnitNumErrStr.length > 0) {
-                completion(false, altUnitNumErrStr);
+                completion(false, NULL, altUnitNumErrStr);
             } else if (timeEndErrStr.length > 0) {
-                completion(false, timeEndErrStr);
+                completion(false, NULL, timeEndErrStr);
             } else if (facilityIDErrStr.length > 0) {
-                completion(false, facilityIDErrStr);
+                completion(false, NULL, facilityIDErrStr);
             } else if (unitSizeErrStr.length > 0) {
-                completion(false, unitSizeErrStr);
+                completion(false, NULL, unitSizeErrStr);
             } else if (cleanOutErrStr.length > 0) {
-                completion(false, cleanOutErrStr);
+                completion(false, NULL, cleanOutErrStr);
             } else if (accessErrStr.length > 0) {
-                completion(false, accessErrStr);
+                completion(false, NULL, accessErrStr);
             }
         }
     }];
@@ -220,79 +223,7 @@ NSString* baseURL = @"https://dev3.storageauctions.net/block";
                 NSMutableArray* aArr = [NSMutableArray array];
                 for (NSInteger index = 0; index < dataArr.count; index++) {
                     NSDictionary* dic = [dataArr objectAtIndex:index];
-                    Auction* auction = [[Auction alloc] init];
-                    
-                    auction.auct_id = [self getIntFrom:(NSNumber*)[dic objectForKey:@"id"]];
-                    auction.facility_id = [self getIntFrom:(NSNumber*)[dic objectForKey:@"facility_id"]];
-                    auction.auction_online_bid_id = [self getIntFrom:(NSNumber*)[dic objectForKey:@"auction_online_bid_id"]];
-                    auction.status = [self getIntFrom:(NSNumber*)[dic objectForKey:@"status"]];
-                    auction.failed_reason = (NSString*)[dic objectForKey:@"failed_reason"];
-                    auction.descr = (NSString*)[dic objectForKey:@"descr"];
-                    auction.time_start = [self getDateFrom:(NSString*)[dic objectForKey:@"time_start"]];
-                    auction.time_st_zone = (NSString*)[dic objectForKey:@"time_st_zone"];
-                    auction.time_end = [self getDateFrom:(NSString*)[dic objectForKey:@"time_end"]];
-                    auction.time_end_zone = (NSString*)[dic objectForKey:@"time_end_zone"];
-                    auction.amount_owed = (NSString*)[dic objectForKey:@"amount_owed"];
-                    auction.fees = [self getFloatFrom:(NSNumber*)[dic objectForKey:@"fees"]];
-                    auction.tenant_name = (NSString*)[dic objectForKey:@"tenant_name"];
-                    auction.unit_number = [self getIntFrom:(NSNumber*)[dic objectForKey:@"unit_number"]];
-                    auction.unit_size = [self getIntFrom:(NSNumber*)[dic objectForKey:@"unit_size"]];
-                    auction.lock_tag = (NSString*)[dic objectForKey:@"lock_tag"];
-                    auction.time_created = [self getDateFrom:(NSString*)[dic objectForKey:@"time_created"]];
-                    auction.time_updated = [self getDateFrom:(NSString*)[dic objectForKey:@"time_updated"]];
-                    auction.bid_count = [self getIntFrom:(NSNumber*)[dic objectForKey:@"bid_count"]];
-                    auction.winner_code = [self getIntFrom:(NSNumber*)[dic objectForKey:@"winner_code"]];
-                    auction.seller_fee = [self getFloatFrom:(NSNumber*)[dic objectForKey:@"seller_fee"]];
-                    auction.buyer_fee = [self getFloatFrom:(NSNumber*)[dic objectForKey:@"buyer_fee"]];
-                    auction.emailed = [self getIntFrom:(NSNumber*)[dic objectForKey:@"emailed"]];
-                    auction.terms = (NSString*)[dic objectForKey:@"terms"];
-                    auction.queue_flag = [self getIntFrom:(NSNumber*)[dic objectForKey:@"queue_flag"]];
-                    auction.auction_id = (NSString*)[dic objectForKey:@"auction_id"];
-                    auction.meta = [[AuctionMeta alloc] init];
-                    NSDictionary* metaDic = [dic objectForKey:@"meta"];
-                    if (metaDic != [NSNull null] && metaDic.count > 0) {
-                        auction.meta.cleanout = [self getIntFrom:(NSNumber*)[metaDic objectForKey:@"cleanout"]];
-                        auction.meta.cleanout_other = (NSString*)[metaDic objectForKey:@"cleanout_other"];
-                        auction.meta.payment = [self getIntFrom:(NSNumber*)[metaDic objectForKey:@"payment"]];
-                        auction.meta.payment_other = (NSString*)[metaDic objectForKey:@"payment_other"];
-                        auction.meta.access = [self getIntFrom:(NSNumber*)[metaDic objectForKey:@"access"]];
-                        auction.meta.currentBidPrice = [self getFloatFrom:(NSNumber*)[metaDic objectForKey:@"ibid_current_price"]];
-                        NSDictionary* imageDic = [metaDic objectForKey:@"ibid_images"];
-                        if (imageDic.count > 0) {
-                            auction.meta.images = [NSArray arrayWithArray:imageDic.allKeys];
-                        }
-                    } else {
-                        auction.meta = NULL;
-                    }
-                    
-                    auction.tax = [self getFloatFrom:(NSNumber*)[dic objectForKey:@"tax"]];
-                    auction.remote_id = (NSString*)[dic objectForKey:@"remote_id"];
-                    auction.source_id = (NSString*)[dic objectForKey:@"source_id"];
-                    auction.reserve = [self getFloatFrom:(NSNumber*)[dic objectForKey:@"reserve"]];
-                    auction.bid_schedule_id = [self getIntFrom:(NSNumber*)[dic objectForKey:@"bid_schedule_id"]];
-                    auction.alt_unit_number = [self getIntFrom:(NSNumber*)[dic objectForKey:@"alt_unit_number"]];
-                    auction.batch_email = [self getIntFrom:(NSNumber*)[dic objectForKey:@"batch_email"]];
-                    auction.title = (NSString*)[dic objectForKey:@"title"];
-                    auction.facility_name = (NSString*)[dic objectForKey:@"facility_name"];
-                    auction.address = (NSString*)[dic objectForKey:@"address"];
-                    auction.city = (NSString*)[dic objectForKey:@"city"];
-                    auction.state_code = (NSString*)[dic objectForKey:@"state_code"];
-                    auction.user_id = [self getIntFrom:(NSNumber*)[dic objectForKey:@"user_id"]];
-                    auction.amount = [self getFloatFrom:(NSNumber*)[dic objectForKey:@"amount"]];
-                    auction.bid_user_id = [self getIntFrom:(NSNumber*)[dic objectForKey:@"bid_user_id"]];
-                    auction.media_auction_id = [self getIntFrom:(NSNumber*)[dic objectForKey:@"media_auction_id"]];
-                    auction.photo_path_size0 = (NSString*)[dic objectForKey:@"photo_path_size0"];
-                    auction.photo_path_size1 = (NSString*)[dic objectForKey:@"photo_path_size1"];
-                    auction.photo_path_size2 = (NSString*)[dic objectForKey:@"photo_path_size2"];
-                    auction.photo_path_size3 = (NSString*)[dic objectForKey:@"photo_path_size3"];
-                    auction.view_count = [self getIntFrom:(NSNumber*)[dic objectForKey:@"view_count"]];
-                    auction.os_date = (NSString*)[dic objectForKey:@"os_date"];
-                    auction.os_time = (NSString*)[dic objectForKey:@"os_time"];
-                    auction.url = (NSString*)[dic objectForKey:@"url"];
-                    auction.group = (NSString*)[dic objectForKey:@"group"];
-                    auction.type = (NSString*)[dic objectForKey:@"type"];
-                    auction.category = (NSString*)[dic objectForKey:@"category"];
-                    
+                    Auction* auction = [self getAuctionFrom:dic];
                     [aArr addObject:auction];
                 }
                 completion(aArr);
@@ -303,6 +234,69 @@ NSString* baseURL = @"https://dev3.storageauctions.net/block";
             completion(NULL);
         }
     }];
+}
+
+-(void) setImage:(NSInteger) auctionID image:(NSData*) imageData completion:(void (^)(BOOL bSuccess, NSString* mediaID, NSString* error)) completion {
+    NSMutableDictionary* _params = [[NSMutableDictionary alloc] init];
+    [_params setObject:[NSString stringWithFormat:@"%ld", (long)auctionID] forKey:@"auction_id"];
+    
+    NSMutableURLRequest* request = [[AFHTTPRequestSerializer serializer] multipartFormRequestWithMethod:@"POST" URLString:[baseURL stringByAppendingString:@"/auction/media/set"] parameters:_params constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
+        [formData appendPartWithFileData:imageData name:@"media" fileName:[self generateFileName] mimeType:@"image/jpeg"];
+    } error:nil];
+    [request setValue:@"Basic ZGV2OnNhc2E=" forHTTPHeaderField:@"Authorization"];
+    
+    AFURLSessionManager* manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
+    NSURLSessionUploadTask* upload = [manager uploadTaskWithStreamedRequest:request progress:NULL completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
+        if (error) {
+            if ([responseObject isKindOfClass:[NSDictionary class]]) {
+                NSArray* keys = [(NSDictionary*) responseObject allKeys];
+                if (keys.count > 0) {
+                    NSString* key = keys[0];
+                    NSString* error = [(NSDictionary*)responseObject objectForKey:key];
+                    completion(false, NULL, error);
+                } else {
+                    completion(false, NULL, NULL);
+                }
+            } else {
+                completion(false, NULL, NULL);
+            }
+        } else {
+            NSNumber* mediaIDNum = [(NSDictionary*)responseObject objectForKey:@"id"];
+            completion(true, [mediaIDNum stringValue], NULL);
+        }
+    }];
+    [upload resume];
+}
+
+-(void) deleteImage:(NSInteger) auctionID mediaID:(NSString*) mediaID completion:(void (^)(BOOL bSuccess, NSString* error)) completion {
+    // NSData* body = [self getDataFrom:[NSString stringWithFormat:@"auction_id=%ld&id=%@", auctionID, mediaID]];
+    NSData* body = [self getDataFrom:[NSString stringWithFormat:@"id=%@", mediaID]];
+    NSString* url = [baseURL stringByAppendingString:@"auction/media/delete"];
+    [self postRequest:url body:body completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
+        if (!error) {
+            NSLog(@"Reply JSON: %@", responseObject);
+            if ([responseObject isKindOfClass:[NSDictionary class]]) {
+                completion(true, NULL);
+            }
+        } else {
+            NSLog(@"Login Error: %@, %@, %@", error, response, responseObject);
+            NSDictionary* errDic = (NSDictionary*)[((NSDictionary*)responseObject) objectForKey:@"errors"];
+            NSArray* allValues = errDic.allValues;
+            if (allValues.count > 0) {
+                completion(false, allValues[0]);
+            }
+        }
+    }];
+}
+
+- (NSString*) generateFileName {
+    NSString *prefixString = @"img_";
+    CFUUIDRef uuid = CFUUIDCreate(NULL);
+    CFStringRef uuidString = CFUUIDCreateString(NULL, uuid);
+    CFRelease(uuid);
+    NSString *uniqueFileName = [NSString stringWithFormat:@"%@%@", prefixString, (__bridge NSString *)uuidString];
+    
+    return uniqueFileName;
 }
 
 -(void) getRequest:(NSString*) url body:(NSData*) body completionHandler:(void (^)(NSURLResponse *response, id responseObject, NSError *error))completionHandler {
@@ -332,32 +326,115 @@ NSString* baseURL = @"https://dev3.storageauctions.net/block";
     [[manager dataTaskWithRequest:req completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
         completionHandler(response, responseObject, error);
     }] resume];
-/*
-    NSMutableURLRequest *urlRequest = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:url]];
+}
+
+- (Auction*) getAuctionFrom:(NSDictionary*) dic {
+    if (dic == NULL)
+        return NULL;
     
-    //create the Method "GET" or "POST"
-    [urlRequest setHTTPMethod:@"POST"];
-    [urlRequest setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
-    [urlRequest setValue:@"Basic ZGV2OnNhc2E=" forHTTPHeaderField:@"Authorization"];
-    [urlRequest setHTTPBody:body];
+    Auction* auction = [[Auction alloc] init];
     
-    
-    NSURLSession *session = [NSURLSession sharedSession];
-    NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:urlRequest completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-        NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
-        if(httpResponse.statusCode == 200)
-        {
-            NSError *parseError = nil;
-            NSDictionary *responseObject = [NSJSONSerialization JSONObjectWithData:data options:0 error:&parseError];
-            completionHandler(response, responseObject, error);
+    auction.auct_id = [self getIntFrom:(NSNumber*)[dic objectForKey:@"id"]];
+    auction.facility_id = [self getIntFrom:(NSNumber*)[dic objectForKey:@"facility_id"]];
+    auction.auction_online_bid_id = [self getIntFrom:(NSNumber*)[dic objectForKey:@"auction_online_bid_id"]];
+    auction.status = [self getIntFrom:(NSNumber*)[dic objectForKey:@"status"]];
+    auction.failed_reason = (NSString*)[dic objectForKey:@"failed_reason"];
+    auction.descr = (NSString*)[dic objectForKey:@"descr"];
+    auction.time_start = [self getDateFrom:(NSString*)[dic objectForKey:@"time_start"]];
+    auction.time_st_zone = (NSString*)[dic objectForKey:@"time_st_zone"];
+    auction.time_end = [self getDateFrom:(NSString*)[dic objectForKey:@"time_end"]];
+    auction.time_end_zone = (NSString*)[dic objectForKey:@"time_end_zone"];
+    auction.amount_owed = (NSString*)[dic objectForKey:@"amount_owed"];
+    auction.fees = [self getFloatFrom:(NSNumber*)[dic objectForKey:@"fees"]];
+    auction.tenant_name = (NSString*)[dic objectForKey:@"tenant_name"];
+    auction.unit_number = [self getIntFrom:(NSNumber*)[dic objectForKey:@"unit_number"]];
+    auction.unit_size = [self getIntFrom:(NSNumber*)[dic objectForKey:@"unit_size"]];
+    auction.lock_tag = (NSString*)[dic objectForKey:@"lock_tag"];
+    auction.time_created = [self getDateFrom:(NSString*)[dic objectForKey:@"time_created"]];
+    auction.time_updated = [self getDateFrom:(NSString*)[dic objectForKey:@"time_updated"]];
+    auction.bid_count = [self getIntFrom:(NSNumber*)[dic objectForKey:@"bid_count"]];
+    auction.winner_code = [self getIntFrom:(NSNumber*)[dic objectForKey:@"winner_code"]];
+    auction.seller_fee = [self getFloatFrom:(NSNumber*)[dic objectForKey:@"seller_fee"]];
+    auction.buyer_fee = [self getFloatFrom:(NSNumber*)[dic objectForKey:@"buyer_fee"]];
+    auction.emailed = [self getIntFrom:(NSNumber*)[dic objectForKey:@"emailed"]];
+    auction.terms = (NSString*)[dic objectForKey:@"terms"];
+    auction.queue_flag = [self getIntFrom:(NSNumber*)[dic objectForKey:@"queue_flag"]];
+    auction.auction_id = (NSString*)[dic objectForKey:@"auction_id"];
+    auction.meta = [[AuctionMeta alloc] init];
+    id metaDicStr = (NSString*)[dic objectForKey:@"meta"];
+    if (metaDicStr != NULL && metaDicStr != [NSNull null]) {
+        if ([metaDicStr isKindOfClass:[NSString class]]) {
+            NSData *data = [metaDicStr dataUsingEncoding:NSUTF8StringEncoding];
+            NSDictionary* metaDic = [NSJSONSerialization JSONObjectWithData:data options:0 error:NULL];
+            if (metaDic != [NSNull null] && metaDic.count > 0) {
+                auction.meta.cleanout = [self getIntFrom:(NSNumber*)[metaDic objectForKey:@"cleanout"]];
+                auction.meta.cleanout_other = (NSString*)[metaDic objectForKey:@"cleanout_other"];
+                auction.meta.payment = [self getIntFrom:(NSNumber*)[metaDic objectForKey:@"payment"]];
+                auction.meta.payment_other = (NSString*)[metaDic objectForKey:@"payment_other"];
+                auction.meta.access = [self getIntFrom:(NSNumber*)[metaDic objectForKey:@"access"]];
+                auction.meta.currentBidPrice = [self getFloatFrom:(NSNumber*)[metaDic objectForKey:@"ibid_current_price"]];
+                NSDictionary* imageDic = [metaDic objectForKey:@"ibid_images"];
+                if (imageDic.count > 0) {
+                    auction.meta.images = [NSArray arrayWithArray:imageDic.allKeys];
+                    NSMutableArray* idArr = [NSMutableArray array];
+                    for (int index = 0; index < imageDic.allKeys.count; index++) {
+                        NSNumber* idNum = (NSNumber*)[imageDic.allValues objectAtIndex:index];
+                        [idArr addObject:[idNum stringValue]];
+                    }
+                    auction.meta.imageIDs = [NSArray arrayWithArray:idArr];
+                }
+            } else {
+                auction.meta = NULL;
+            }
+        } else {
+            NSDictionary* metaDic = (NSDictionary*) metaDicStr;
+            if (metaDic != [NSNull null] && metaDic.count > 0) {
+                auction.meta.cleanout = [self getIntFrom:(NSNumber*)[metaDic objectForKey:@"cleanout"]];
+                auction.meta.cleanout_other = (NSString*)[metaDic objectForKey:@"cleanout_other"];
+                auction.meta.payment = [self getIntFrom:(NSNumber*)[metaDic objectForKey:@"payment"]];
+                auction.meta.payment_other = (NSString*)[metaDic objectForKey:@"payment_other"];
+                auction.meta.access = [self getIntFrom:(NSNumber*)[metaDic objectForKey:@"access"]];
+                auction.meta.currentBidPrice = [self getFloatFrom:(NSNumber*)[metaDic objectForKey:@"ibid_current_price"]];
+                NSDictionary* imageDic = [metaDic objectForKey:@"ibid_images"];
+                if (imageDic.count > 0) {
+                    auction.meta.images = [NSArray arrayWithArray:imageDic.allKeys];
+                    auction.meta.imageIDs = [NSArray arrayWithArray:imageDic.allValues];
+                }
+            } else {
+                auction.meta = NULL;
+            }
         }
-        else
-        {
-            completionHandler(nil, nil, error);
-        }
-    }];
-    [dataTask resume];
-*/
+    }
+    
+    auction.tax = [self getFloatFrom:(NSNumber*)[dic objectForKey:@"tax"]];
+    auction.remote_id = (NSString*)[dic objectForKey:@"remote_id"];
+    auction.source_id = (NSString*)[dic objectForKey:@"source_id"];
+    auction.reserve = [self getFloatFrom:(NSNumber*)[dic objectForKey:@"reserve"]];
+    auction.bid_schedule_id = [self getIntFrom:(NSNumber*)[dic objectForKey:@"bid_schedule_id"]];
+    auction.alt_unit_number = [self getIntFrom:(NSNumber*)[dic objectForKey:@"alt_unit_number"]];
+    auction.batch_email = [self getIntFrom:(NSNumber*)[dic objectForKey:@"batch_email"]];
+    auction.title = (NSString*)[dic objectForKey:@"title"];
+    auction.facility_name = (NSString*)[dic objectForKey:@"facility_name"];
+    auction.address = (NSString*)[dic objectForKey:@"address"];
+    auction.city = (NSString*)[dic objectForKey:@"city"];
+    auction.state_code = (NSString*)[dic objectForKey:@"state_code"];
+    auction.user_id = [self getIntFrom:(NSNumber*)[dic objectForKey:@"user_id"]];
+    auction.amount = [self getFloatFrom:(NSNumber*)[dic objectForKey:@"amount"]];
+    auction.bid_user_id = [self getIntFrom:(NSNumber*)[dic objectForKey:@"bid_user_id"]];
+    auction.media_auction_id = [self getIntFrom:(NSNumber*)[dic objectForKey:@"media_auction_id"]];
+    auction.photo_path_size0 = (NSString*)[dic objectForKey:@"photo_path_size0"];
+    auction.photo_path_size1 = (NSString*)[dic objectForKey:@"photo_path_size1"];
+    auction.photo_path_size2 = (NSString*)[dic objectForKey:@"photo_path_size2"];
+    auction.photo_path_size3 = (NSString*)[dic objectForKey:@"photo_path_size3"];
+    auction.view_count = [self getIntFrom:(NSNumber*)[dic objectForKey:@"view_count"]];
+    auction.os_date = (NSString*)[dic objectForKey:@"os_date"];
+    auction.os_time = (NSString*)[dic objectForKey:@"os_time"];
+    auction.url = (NSString*)[dic objectForKey:@"url"];
+    auction.group = (NSString*)[dic objectForKey:@"group"];
+    auction.type = (NSString*)[dic objectForKey:@"type"];
+    auction.category = (NSString*)[dic objectForKey:@"category"];
+    
+    return auction;
 }
 
 -(NSData*) getDataFrom:(NSString*) str {

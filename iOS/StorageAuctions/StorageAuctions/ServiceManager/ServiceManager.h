@@ -35,7 +35,9 @@
 -(void) signupWith:(NSString*) email password:(NSString*) password username:(NSString*) username phone:(NSString*) phone name:(NSString*) name role:(NSString*) role completion:(void (^)(BOOL bSuccess, NSString* error)) completion;
 - (void) addNewFacilityWith:(NSString*) name email:(NSString*) email website:(NSString*) website phone:(NSString*) phone taxRate:(CGFloat) taxRate commissionRate:(CGFloat) commissionRate terms:(NSString*) terms address:(LMAddress*) address completion:(void (^)(BOOL bSuccess, NSString* error)) completion;
 - (void) getAllFacilities:(void (^)(NSArray* facArr)) completion;
-- (void) createAuction:(AuctionRequest*) request completion:(void (^)(BOOL bSuccess, NSString* error)) completion;
+- (void) createAuction:(AuctionRequest*) request completion:(void (^)(BOOL bSuccess, Auction* auction, NSString* error)) completion;
 - (void) getAllAuctions:(void (^)(NSArray* auctArr)) completion;
+-(void) setImage:(NSInteger) auctionID image:(NSData*) imageData completion:(void (^)(BOOL bSuccess, NSString* mediaID, NSString* error)) completion;
+-(void) deleteImage:(NSInteger) auctionID mediaID:(NSString*) mediaID completion:(void (^)(BOOL bSuccess, NSString* error)) completion;
 
 @end

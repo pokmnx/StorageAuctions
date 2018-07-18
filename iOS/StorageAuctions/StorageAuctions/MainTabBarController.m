@@ -7,6 +7,9 @@
 //
 
 #import "MainTabBarController.h"
+#import "HomeController.h"
+#import "AuctionController.h"
+#import "SearchController.h"
 
 @interface MainTabBarController ()
 
@@ -39,7 +42,18 @@
     [searchItem setImage:[[UIImage imageNamed:@"search_tab"] imageWithRenderingMode:UIImageRenderingModeAutomatic]];
     [searchItem setSelectedImage:[[UIImage imageNamed:@"search_tab"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
 }
-
+/*
+- (void) tabBar:(UITabBar *)tabBar didSelectItem:(UITabBarItem *)item {
+    if (item == tabBar.items[0]) {
+        if ([self.viewControllers[0] isKindOfClass:[HomeController class]] == false) {
+            HomeController* homeController = (HomeController*) [[UIStoryboard storyboardWithName:@"Main" bundle:NULL] instantiateViewControllerWithIdentifier:@"homeController"];
+            NSArray* array = @[homeController, self.viewControllers[1], self.viewControllers[2]];
+            [self setViewControllers:array];
+            [self setSelectedIndex:0];
+        }
+    }
+}
+*/
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

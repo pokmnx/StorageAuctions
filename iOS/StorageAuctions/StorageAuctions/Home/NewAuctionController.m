@@ -13,6 +13,10 @@
 #import <PopupDialog/PopupDialog-Swift.h>
 #import "UIViewController+LGSideMenuController.h"
 #import "MainTabBarController.h"
+#import "AuctionDetailController.h"
+#import "HomeController.h"
+#import "AuctionController.h"
+#import "SearchController.h"
 
 @interface NewAuctionController () <UIPickerViewDelegate, UIPickerViewDataSource>
 
@@ -78,12 +82,32 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
-    [self.navigationItem setTitle:@"Create New Auction"];
     [self.navigationController.navigationBar setTitleTextAttributes:
      @{NSForegroundColorAttributeName:[UIColor whiteColor]}];
     
     [self initializeArray];
     [self initializeUI];
+    [self initWithAuction];
+}
+
+- (void) initWithAuction {
+    if (_bEdit && _auction != NULL) {
+        _facilityName.text = _auction.facility_name;
+        _auctionTitle.text = _auction.title;
+        _realUnit.text = [NSString stringWithFormat:@"%ld", _auction.unit_number];
+        _altUnit.text = [NSString stringWithFormat:@"%ld", _auction.alt_unit_number];
+        
+    }
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self.navigationItem setTitle:@"Create New Auction"];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [self.navigationItem setTitle:@""];
 }
 
 - (void) initializeUI {
@@ -344,19 +368,11 @@
     request.tenant_name = _tenantName.text;
     
     [ProgressHUD show];
-    [[ServiceManager sharedManager] createAuction:request completion:^(BOOL bSuccess, NSString* error) {
+    [[ServiceManager sharedManager] createAuction:request completion:^(BOOL bSuccess, Auction* auction, NSString* error) {
         [[NSOperationQueue mainQueue] addOperationWithBlock:^{
             if (bSuccess) {
                 [ProgressHUD dismiss];
-                UIViewController *topController = [UIApplication sharedApplication].keyWindow.rootViewController;
-                while (topController.presentedViewController) {
-                    topController = topController.presentedViewController;
-                }
-                UINavigationController* navController = (UINavigationController*) ((LGSideMenuController*)topController).rootViewController;
-                NSArray* controllerArr = [navController viewControllers];
-                MainTabBarController* mainTabController = (MainTabBarController*) controllerArr[0];
-                [mainTabController setSelectedIndex:0];
-                [navController popToViewController:mainTabController animated:TRUE];
+                [self performSegueWithIdentifier:@"showImageDetail" sender:auction];
             } else {
                 [ProgressHUD showError:error];
             }
@@ -376,8 +392,8 @@
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    AuctionDetailController* controller = (AuctionDetailController*) [segue destinationViewController];
+    controller.auction = (Auction*) sender;
 }
 
 @end

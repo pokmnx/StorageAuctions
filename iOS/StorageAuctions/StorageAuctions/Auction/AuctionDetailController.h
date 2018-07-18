@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Auction.h"
 
 @interface AuctionDetailController : UIViewController
+
+@property (nonatomic) Auction* auction;
 
 @end

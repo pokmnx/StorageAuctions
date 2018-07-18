@@ -10,4 +10,8 @@
 
 @interface AuctionDetailImageCell : UICollectionViewCell
 
+@property (weak, nonatomic) IBOutlet UIImageView *detailImageView;
+@property (weak, nonatomic) IBOutlet UIButton *deleteBtn;
+
+
 @end

@@ -18,5 +18,6 @@
 
 @property (nonatomic) float currentBidPrice;
 @property (nonatomic) NSArray* images;
+@property (nonatomic) NSArray* imageIDs;
 
 @end

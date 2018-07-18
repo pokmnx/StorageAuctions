@@ -11,6 +11,7 @@
 #import "ServiceManager.h"
 #import "Auction.h"
 #import <SDWebImage/UIImageView+WebCache.h>
+#import "NewAuctionController.h"
 
 @interface AuctionListController () <UITableViewDataSource, UITableViewDelegate>
 
@@ -90,6 +91,13 @@
     }
     
     return cell;
+}
+
+- (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    UINavigationController* navController = (UINavigationController*) self.sideMenuController.rootViewController;
+    NewAuctionController* controller = (NewAuctionController*) [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"newAuctionController"];
+    
+    [navController pushViewController:controller animated:TRUE];
 }
 
 - (NSInteger) getDifferenceDate:(NSDate*) endDate {

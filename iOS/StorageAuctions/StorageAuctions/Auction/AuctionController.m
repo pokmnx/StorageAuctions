@@ -62,8 +62,8 @@
 
 - (void)menuBarController:(RMPScrollingMenuBarController*)menuBarController didSelectViewController:(UIViewController*)viewController {
     NSLog(@"selected index - %ld", menuBarController.selectedIndex);
-    // NSArray* filterNum = @[@(-1), @(1), @(88), @(6)];
-    NSArray* filterNum = @[@(-1), @(3), @(4), @(0)];
+    NSArray* filterNum = @[@(-1), @(1), @(88), @(6)];
+    // NSArray* filterNum = @[@(-1), @(3), @(4), @(0)];
     NSInteger index = menuBarController.selectedIndex;
     AuctionListController* controller = (AuctionListController*) viewController;
     if (index != 0) {

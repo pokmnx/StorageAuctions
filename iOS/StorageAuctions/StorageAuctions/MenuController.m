@@ -10,6 +10,7 @@
 #import "ServiceManager.h"
 #import "UIViewController+LGSideMenuController.h"
 #import "MainTabBarController.h"
+#import "HomeController.h"
 
 @interface MenuController ()
 
@@ -31,7 +32,16 @@
         }
         UINavigationController* navController = (UINavigationController*) ((LGSideMenuController*)topController).rootViewController;
         NSArray* controllerArr = [navController viewControllers];
+
         MainTabBarController* mainTabController = (MainTabBarController*) controllerArr[0];
+/*
+        HomeController* homeController = (HomeController*)[[UIStoryboard storyboardWithName:@"Main" bundle:NULL] instantiateViewControllerWithIdentifier:@"homeController"];
+        
+        NSArray* tabControllerArr = [mainTabController viewControllers];
+        NSArray* newTabContArr = @[homeController, tabControllerArr[1], tabControllerArr[2]];
+        
+        [mainTabController setViewControllers:newTabContArr];
+*/
         [mainTabController setSelectedIndex:0];
         [navController popToViewController:mainTabController animated:TRUE];
     }];

@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Auction.h"
 
 @interface NewAuctionController : UIViewController
+
+@property (nonatomic) Auction* auction;
+@property (nonatomic) BOOL bEdit;
 
 @end

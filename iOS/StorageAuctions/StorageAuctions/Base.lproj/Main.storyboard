@@ -127,7 +127,7 @@
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" secureTextEntry="YES"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7F3-8S-f29">
-                                <rect key="frame" x="37" y="116" width="300" height="64.5"/>
+                                <rect key="frame" x="37" y="116" width="300" height="65"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="7F3-8S-f29" secondAttribute="height" multiplier="848:182" id="dwt-fg-xe1"/>
                                 </constraints>
@@ -137,7 +137,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XM3-UC-QtT">
-                                <rect key="frame" x="126" y="196.5" width="123" height="30"/>
+                                <rect key="frame" x="126" y="197" width="123" height="30"/>
                                 <color key="tintColor" red="0.98039215690000003" green="0.40784313729999999" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Forgot password?">
                                     <color key="titleColor" red="0.80000000000000004" green="0.80000000000000004" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
@@ -1264,10 +1264,10 @@ IAo
                         <viewControllerLayoutGuide type="bottom" id="Y1S-s3-lkj"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="w59-o4-hyZ">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="1800"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="BhZ-za-XNh">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="no-image" translatesAutoresizingMaskIntoConstraints="NO" id="BhZ-za-XNh">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="240"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="240" id="kDV-Iy-hn1"/>
@@ -1305,7 +1305,7 @@ IAo
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Status: Upcoming" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cYG-VF-oS1">
-                                        <rect key="frame" x="20" y="112" width="115.5" height="17"/>
+                                        <rect key="frame" x="20" y="112" width="116" height="17"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
@@ -1336,9 +1336,9 @@ IAo
                                 </constraints>
                             </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Rav-zo-C0H">
-                                <rect key="frame" x="0.0" y="239" width="375" height="348"/>
+                                <rect key="frame" x="0.0" y="239" width="375" height="1480.5"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="mOg-ak-9bu">
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="mOg-ak-9bu">
                                     <size key="itemSize" width="150" height="150"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -1356,7 +1356,7 @@ IAo
                                                     <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
                                                 </imageView>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l7J-Bb-uXX">
-                                                    <rect key="frame" x="8" y="8" width="22.5" height="23"/>
+                                                    <rect key="frame" x="8" y="8" width="23" height="23"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="l7J-Bb-uXX" secondAttribute="height" multiplier="47:48" id="cpv-kv-MwG"/>
                                                     </constraints>
@@ -1373,6 +1373,10 @@ IAo
                                             <constraint firstItem="Pwq-yJ-j4e" firstAttribute="centerY" secondItem="hOf-LP-qam" secondAttribute="centerY" id="gcX-YV-f4N"/>
                                             <constraint firstItem="Pwq-yJ-j4e" firstAttribute="centerX" secondItem="hOf-LP-qam" secondAttribute="centerX" id="r46-fW-4oS"/>
                                         </constraints>
+                                        <connections>
+                                            <outlet property="deleteBtn" destination="l7J-Bb-uXX" id="P9j-R7-rG9"/>
+                                            <outlet property="detailImageView" destination="Pwq-yJ-j4e" id="wyN-z6-IRY"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                                 <connections>
@@ -1381,7 +1385,7 @@ IAo
                                 </connections>
                             </collectionView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="25r-y3-w8V">
-                                <rect key="frame" x="36" y="594.5" width="303" height="52.5"/>
+                                <rect key="frame" x="36" y="1727.5" width="303" height="52.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="25r-y3-w8V" secondAttribute="height" multiplier="388:67" id="qtW-YM-vfD"/>
                                 </constraints>
@@ -1394,7 +1398,7 @@ IAo
                         <color key="backgroundColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="EaP-v2-TMX" firstAttribute="trailing" secondItem="BhZ-za-XNh" secondAttribute="trailing" id="5bQ-la-DWr"/>
-                            <constraint firstItem="BhZ-za-XNh" firstAttribute="top" secondItem="mSe-DV-zcm" secondAttribute="bottom" constant="-20" id="8Sg-YF-Vlp"/>
+                            <constraint firstItem="BhZ-za-XNh" firstAttribute="top" secondItem="mSe-DV-zcm" secondAttribute="bottom" id="8Sg-YF-Vlp"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Rav-zo-C0H" secondAttribute="trailing" constant="-16" id="G9f-kd-0QZ"/>
                             <constraint firstItem="Rav-zo-C0H" firstAttribute="leading" secondItem="w59-o4-hyZ" secondAttribute="leadingMargin" constant="-16" id="RT0-iF-sQl"/>
                             <constraint firstItem="25r-y3-w8V" firstAttribute="leading" secondItem="w59-o4-hyZ" secondAttribute="leadingMargin" constant="20" id="Siz-aQ-H6M"/>
@@ -1412,6 +1416,7 @@ IAo
                     <connections>
                         <outlet property="bidPriceLabel" destination="T5d-N6-in4" id="Sa4-vn-0Jy"/>
                         <outlet property="endDateLabel" destination="Erb-bS-ahb" id="cWk-3N-VC6"/>
+                        <outlet property="firstImageView" destination="BhZ-za-XNh" id="Ayo-9t-42J"/>
                         <outlet property="imageListView" destination="Rav-zo-C0H" id="udP-xa-EYf"/>
                         <outlet property="startDateLabel" destination="Xw8-ap-gIE" id="vFJ-3b-L3t"/>
                         <outlet property="statusLabel" destination="cYG-VF-oS1" id="Byc-0m-grj"/>
@@ -1420,7 +1425,7 @@ IAo
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="u9p-Nz-3LP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5720.8000000000002" y="1216.6416791604199"/>
+            <point key="canvasLocation" x="7092" y="1699"/>
         </scene>
         <!--Home Controller-->
         <scene sceneID="vVE-ze-9Q4">
@@ -2624,6 +2629,7 @@ IAo
                         <outlet property="tenantName" destination="eoc-Gy-esC" id="93G-w6-HSt"/>
                         <outlet property="timeZone" destination="w7L-x5-5rD" id="hhh-eg-cCD"/>
                         <outlet property="unitSqFeet" destination="tii-Qs-Ezs" id="a7i-qq-s5a"/>
+                        <segue destination="Xfg-EV-QOf" kind="show" identifier="showImageDetail" id="RW8-6n-OII"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Uoe-5Y-00e" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2964,6 +2970,7 @@ IAo
         <image name="logo" width="531" height="74"/>
         <image name="mapview_background" width="983" height="1459"/>
         <image name="menu_bottom" width="62" height="61"/>
+        <image name="no-image" width="990" height="390"/>
         <image name="owner_img" width="108" height="104"/>
         <image name="place_icon" width="57" height="73"/>
         <image name="save1_btn" width="777" height="134"/>
