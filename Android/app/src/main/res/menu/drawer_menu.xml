@@ -6,18 +6,26 @@
             android:id="@+id/home_menu"
             android:title="HOME"
             />
+    </group>
+    <group android:checkableBehavior="single">
         <item
             android:id="@+id/auctions_menu"
             android:title="YOUR AUCTIONS"
             />
+    </group>
+    <group android:checkableBehavior="single">
         <item
             android:id="@+id/list_auction_menu"
             android:title="LIST AN AUCTION"
             />
+    </group>
+    <group android:checkableBehavior="single">
         <item
             android:id="@+id/add_facility_menu"
             android:title="ADD NEW FACILITY"
             />
+    </group>
+    <group android:checkableBehavior="single">
         <item
             android:id="@+id/report_menu"
             android:title="REPORTS"

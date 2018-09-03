@@ -61,7 +61,7 @@
         _itemButton.tag = self.tag;
         _itemButton.frame = CGRectMake(0, 0, _width, 24);
 
-        _itemButton.titleLabel.font = [UIFont systemFontOfSize:16.0];
+        _itemButton.titleLabel.font = [UIFont systemFontOfSize:12.0];
         [_itemButton setTitle:self.title
                      forState:UIControlStateNormal];
         [_itemButton setTitleColor:[UIColor colorWithRed:0.647 green:0.631 blue:0.604 alpha:1.000]

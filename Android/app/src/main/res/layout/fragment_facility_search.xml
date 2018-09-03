@@ -19,13 +19,13 @@
         app:srcCompat="@drawable/place_icon" />
 
     <TextView
-        android:id="@+id/textView6"
+        android:id="@+id/addressTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="16dp"
         android:layout_marginStart="16dp"
         android:text="Enter Facility Address"
-        android:textSize="18sp"
+        android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="@+id/imageView9"
         app:layout_constraintStart_toEndOf="@+id/imageView9"
         app:layout_constraintTop_toTopOf="@+id/imageView9" />
@@ -83,6 +83,7 @@
         android:layout_marginLeft="32dp"
         android:layout_marginRight="32dp"
         android:layout_marginStart="32dp"
+        android:textSize="12dp"
         android:background="@drawable/rounded_button_main"
         android:text="Search"
         android:textColor="@color/white"

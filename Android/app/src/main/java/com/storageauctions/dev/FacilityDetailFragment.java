@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.storageauctions.dev.ServiceManager.ServiceManager;
@@ -35,6 +36,13 @@ public class FacilityDetailFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_facility_detail, container, false);
 
+        final TextView facilityDetailTitle = (TextView) view.findViewById(R.id.detail_title);
+        final TextView facilityNameTitle = (TextView) view.findViewById(R.id.facility_name_title);
+        final TextView phoneNumberTitle = (TextView) view.findViewById(R.id.phone_number_title);
+        final TextView contactEmailTitle = (TextView) view.findViewById(R.id.contact_email_title);
+        final TextView rateTitle = (TextView) view.findViewById(R.id.tax_rate_title);
+        final TextView commissionTitle = (TextView) view.findViewById(R.id.commission_title);
+
         final EditText nameEdit = (EditText) view.findViewById(R.id.detail_facility_name);
         final EditText phoneEdit = (EditText) view.findViewById(R.id.detail_phone_number);
         final EditText emailEdit = (EditText) view.findViewById(R.id.detail_contact_email);
@@ -42,6 +50,21 @@ public class FacilityDetailFragment extends Fragment {
         final EditText commissionEdit = (EditText) view.findViewById(R.id.detail_commision_rate);
 
         Button saveBtn = (Button) view.findViewById(R.id.detail_save_button);
+
+        ServiceManager.sharedManager().setTypeFace(getContext(), facilityDetailTitle, R.font.montserrat_medium);
+        ServiceManager.sharedManager().setTypeFace(getContext(), facilityNameTitle, R.font.montserrat_medium);
+        ServiceManager.sharedManager().setTypeFace(getContext(), phoneNumberTitle, R.font.montserrat_medium);
+        ServiceManager.sharedManager().setTypeFace(getContext(), contactEmailTitle, R.font.montserrat_medium);
+        ServiceManager.sharedManager().setTypeFace(getContext(), rateTitle, R.font.montserrat_medium);
+        ServiceManager.sharedManager().setTypeFace(getContext(), commissionTitle, R.font.montserrat_medium);
+
+        ServiceManager.sharedManager().setTypeFace(getContext(), nameEdit, R.font.raleway_regular);
+        ServiceManager.sharedManager().setTypeFace(getContext(), phoneEdit, R.font.raleway_regular);
+        ServiceManager.sharedManager().setTypeFace(getContext(), emailEdit, R.font.raleway_regular);
+        ServiceManager.sharedManager().setTypeFace(getContext(), taxEdit, R.font.raleway_regular);
+        ServiceManager.sharedManager().setTypeFace(getContext(), commissionEdit, R.font.raleway_regular);
+
+        ServiceManager.sharedManager().setTypeFace(getContext(), saveBtn, R.font.montserrat_bold);
 
         saveBtn.setOnClickListener(new View.OnClickListener() {
             @Override

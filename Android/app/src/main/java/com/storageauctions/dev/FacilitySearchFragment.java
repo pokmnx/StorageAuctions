@@ -15,6 +15,9 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.TextView;
+
+import com.storageauctions.dev.ServiceManager.ServiceManager;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -36,6 +39,7 @@ public class FacilitySearchFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_facility_search, container, false);
 
+        final TextView addressTitle = (TextView) view.findViewById(R.id.addressTitle);
         final EditText addressField = (EditText) view.findViewById(R.id.address_field);
         Button searchBtn = (Button) view.findViewById(R.id.search_btn);
         ProgressView.sharedView().setContext(getContext());
@@ -47,6 +51,10 @@ public class FacilitySearchFragment extends Fragment {
                 new DataLongOperationAsynchTask().execute(addressField.getText().toString());
             }
         });
+
+        ServiceManager.sharedManager().setTypeFace(getContext(), addressTitle, R.font.montserrat_medium);
+        ServiceManager.sharedManager().setTypeFace(getContext(), addressField, R.font.montserrat_extralight);
+        ServiceManager.sharedManager().setTypeFace(getContext(), searchBtn, R.font.montserrat_bold);
 
         return view;
     }

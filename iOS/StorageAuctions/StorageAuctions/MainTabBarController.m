@@ -32,6 +32,47 @@
     UINavigationBar* bar = [self.navigationController navigationBar];
     [bar setBarTintColor:[UIColor colorWithRed:255 / 255.0f green:126 / 255.0f blue:39 / 255.0f alpha:0.8]];
     
+    [self setTabMenuIcons];
+}
+
+- (void) tabBar:(UITabBar *)tabBar didSelectItem:(UITabBarItem *)item {
+
+    if (item == tabBar.items[0]) {
+        [self checkViewControllers:0];
+    }
+    else if (item == tabBar.items[1]) {
+        [self checkViewControllers:1];
+    }
+}
+
+- (void) checkViewControllers:(NSInteger) index {
+    if (index != 0 && [self.viewControllers[0] isKindOfClass:[HomeController class]] == false) {
+        HomeController* homeController = (HomeController*) [[UIStoryboard storyboardWithName:@"Main" bundle:NULL] instantiateViewControllerWithIdentifier:@"homeController"];
+        
+        UITabBarItem* item = [[UITabBarItem alloc] initWithTitle:NULL image:[[UIImage imageNamed:@"home_tab"] imageWithRenderingMode:UIImageRenderingModeAutomatic] selectedImage:[[UIImage imageNamed:@"home_tab"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
+        item.imageInsets = UIEdgeInsetsMake(6, 0, -6, 0);
+        [homeController setTabBarItem:item];
+        
+        NSArray* array = @[homeController, self.viewControllers[1], self.viewControllers[2]];
+        [self setViewControllers:array];
+        // [self setSelectedIndex:0];
+    }
+    
+    if (index != 1 && [self.viewControllers[1] isKindOfClass:[AuctionController class]] == false) {
+        AuctionController* auctionController = (AuctionController*) [[UIStoryboard storyboardWithName:@"Main" bundle:NULL] instantiateViewControllerWithIdentifier:@"auctionController"];
+        
+        UITabBarItem* item = [[UITabBarItem alloc] initWithTitle:NULL image:[[UIImage imageNamed:@"auction_tab"] imageWithRenderingMode:UIImageRenderingModeAutomatic] selectedImage:[[UIImage imageNamed:@"auction_tab"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
+        item.imageInsets = UIEdgeInsetsMake(6, 0, -6, 0);
+        [auctionController setTabBarItem:item];
+        
+        NSArray* array = @[self.viewControllers[0], auctionController, self.viewControllers[2]];
+        [self setViewControllers:array];
+        // [self setSelectedIndex:1];
+    }
+}
+
+
+- (void) setTabMenuIcons {
     UITabBarItem* homeItem = [[self.tabBar items] objectAtIndex:0];
     [homeItem setImage:[[UIImage imageNamed:@"home_tab"] imageWithRenderingMode:UIImageRenderingModeAutomatic]];
     [homeItem setSelectedImage:[[UIImage imageNamed:@"home_tab"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
@@ -42,18 +83,10 @@
     [searchItem setImage:[[UIImage imageNamed:@"search_tab"] imageWithRenderingMode:UIImageRenderingModeAutomatic]];
     [searchItem setSelectedImage:[[UIImage imageNamed:@"search_tab"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
 }
-/*
-- (void) tabBar:(UITabBar *)tabBar didSelectItem:(UITabBarItem *)item {
-    if (item == tabBar.items[0]) {
-        if ([self.viewControllers[0] isKindOfClass:[HomeController class]] == false) {
-            HomeController* homeController = (HomeController*) [[UIStoryboard storyboardWithName:@"Main" bundle:NULL] instantiateViewControllerWithIdentifier:@"homeController"];
-            NSArray* array = @[homeController, self.viewControllers[1], self.viewControllers[2]];
-            [self setViewControllers:array];
-            [self setSelectedIndex:0];
-        }
-    }
-}
-*/
+
+
+
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

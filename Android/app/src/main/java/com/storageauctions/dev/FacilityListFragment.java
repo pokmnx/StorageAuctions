@@ -174,68 +174,16 @@ public class FacilityListFragment extends Fragment {
             TextView auctionCountView = (TextView) rowView.findViewById(R.id.facility_cell_active_auctions);
             TextView totalAuctionCountView = (TextView) rowView.findViewById(R.id.facility_cell_total_auctions);
 
+            ServiceManager.sharedManager().setTypeFace(getContext(), nameView, R.font.montserrat_medium);
+            ServiceManager.sharedManager().setTypeFace(getContext(), addressView, R.font.montserrat_extralight);
+            ServiceManager.sharedManager().setTypeFace(getContext(), auctionCountView, R.font.montserrat_extralight);
+            ServiceManager.sharedManager().setTypeFace(getContext(), totalAuctionCountView, R.font.montserrat_extralight);
+
             nameView.setText(facility.name);
             addressView.setText(facility.address);
             auctionCountView.setText("Active Auctions: " + facility.active);
-            totalAuctionCountView.setText("Total Auctions: ");
+            totalAuctionCountView.setText("Total Auctions: 4");
             final LatLng point = new LatLng(facility.lat, facility.lon);
-
-/*
-            mSupportMapFragment = (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.facility_cell_map);
-            if (mSupportMapFragment == null) {
-                FragmentManager fragmentManager = getFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                mSupportMapFragment = SupportMapFragment.newInstance();
-                fragmentTransaction.replace(R.id.facility_cell_map, mSupportMapFragment).commit();
-            }
-
-            if (mSupportMapFragment != null) {
-                mSupportMapFragment.getMapAsync(new OnMapReadyCallback() {
-                    @Override
-                    public void onMapReady(GoogleMap googleMap) {
-                        if (googleMap != null) {
-
-                            MarkerOptions marker = new MarkerOptions().position(
-                                    new LatLng(facility.lat, facility.lon));
-                            marker.icon(BitmapDescriptorFactory
-                                    .defaultMarker(BitmapDescriptorFactory.HUE_ROSE));
-
-                            // adding marker
-                            googleMap.addMarker(marker);
-
-                            googleMap.getUiSettings().setAllGesturesEnabled(true);
-                            CameraPosition cameraPosition = new CameraPosition.Builder().target(point).zoom(15.0f).build();
-                            CameraUpdate cameraUpdate = CameraUpdateFactory.newCameraPosition(cameraPosition);
-                            googleMap.moveCamera(cameraUpdate);
-                        }
-                    }
-                });
-            }
-*/
-/*
-            MapView mapView = (MapView) rowView.findViewById(R.id.facility_cell_map);
-            mapView.onCreate(mSavedInstance);
-            mapView.getMapAsync(new OnMapReadyCallback() {
-                @Override
-                public void onMapReady(GoogleMap googleMap) {
-                    if (googleMap != null) {
-
-                        MarkerOptions marker = new MarkerOptions().position(
-                                new LatLng(facility.lat, facility.lon));
-                        marker.icon(BitmapDescriptorFactory
-                                .defaultMarker(BitmapDescriptorFactory.HUE_ROSE));
-
-                        // adding marker
-                        googleMap.addMarker(marker);
-
-                        googleMap.getUiSettings().setAllGesturesEnabled(true);
-                        CameraPosition cameraPosition = new CameraPosition.Builder().target(point).zoom(1.0f).build();
-                        CameraUpdate cameraUpdate = CameraUpdateFactory.newCameraPosition(cameraPosition);
-                        googleMap.moveCamera(cameraUpdate);
-                    }
-                }
-            });
-*/
 
             ImageView mapView = (ImageView) rowView.findViewById(R.id.facility_cell_map);
             String getMapURL = "http://maps.googleapis.com/maps/api/staticmap?zoom=15&size=560x240&markers=size:mid|color:red|"

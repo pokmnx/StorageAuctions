@@ -25,4 +25,6 @@ public class AuctionRequest {
     public String save_terms;
     public String payment_other;
     public String tenant_name;
+    public String auct_id;
+    public String status;
 }

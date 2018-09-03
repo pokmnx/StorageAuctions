@@ -34,5 +34,7 @@
 @property(nonatomic) NSString* save_terms;
 @property(nonatomic) NSString* payment_other;
 @property(nonatomic) NSString* tenant_name;
+@property(nonatomic) NSString* auct_id;
+@property(nonatomic) NSString* status;
 
 @end

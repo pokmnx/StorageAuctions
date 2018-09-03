@@ -1,5 +1,6 @@
 package com.storageauctions.dev;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -145,6 +146,11 @@ public class MainActivity extends AppCompatActivity {
     public void onBackPressed() {
         // super.onBackPressed();
         getSupportFragmentManager().popBackStack();
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
     }
 
     void setupToolbar(){

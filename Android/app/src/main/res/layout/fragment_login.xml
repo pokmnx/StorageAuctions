@@ -45,7 +45,7 @@
         android:layout_height="60dp"
         android:layout_marginTop="12dp"
         android:adjustViewBounds="true"
-        android:background="@drawable/login_btn"
+        android:background="@drawable/login"
         android:scaleType="fitStart"
         app:layout_constraintDimensionRatio="w,848:182"
         app:layout_constraintEnd_toEndOf="parent"

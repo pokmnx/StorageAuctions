@@ -1,16 +1,21 @@
 package com.storageauctions.dev;
 
 import android.content.Context;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.content.res.ResourcesCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.TextView;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -44,6 +49,8 @@ public class LoginActivity extends AppCompatActivity {
         }
     }
 
+    public TabLayout mTabLayout;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,7 +64,27 @@ public class LoginActivity extends AppCompatActivity {
         LoginFragmentAdapter adapter = new LoginFragmentAdapter(getSupportFragmentManager());
         pager.setAdapter(adapter);
 
-        TabLayout tabLayout = (TabLayout) findViewById(R.id.tabLayout);
-        tabLayout.setupWithViewPager(pager);
+        mTabLayout = (TabLayout) findViewById(R.id.tabLayout);
+        mTabLayout.setupWithViewPager(pager);
+        setFont();
+    }
+
+    void setFont() {
+        ViewGroup vg = (ViewGroup) mTabLayout.getChildAt(0);
+        int tabsCount = vg.getChildCount();
+
+        for (int j = 0; j < tabsCount; j++) {
+            ViewGroup vgTab = (ViewGroup) vg.getChildAt(j);
+
+            int tabChildsCount = vgTab.getChildCount();
+
+            for (int i = 0; i < tabChildsCount; i++) {
+                View tabViewChild = vgTab.getChildAt(i);
+                if (tabViewChild instanceof TextView) {
+                    Typeface typeface = ResourcesCompat.getFont(this, R.font.montserrat_medium);
+                    ((TextView) tabViewChild).setTypeface(typeface);
+                }
+            }
+        }
     }
 }

@@ -38,7 +38,16 @@ NSString* baseURL = @"https://dev3.storageauctions.net/block";
             NSLog(@"Reply JSON: %@", responseObject);
             if ([responseObject isKindOfClass:[NSDictionary class]]) {
                 self.bLoginFirstTime = false;
-                completion(true, NULL);
+                self.userName = (NSString*)[(NSDictionary*)responseObject objectForKey:@"name"];
+                [self getAllFacilities:^(NSArray* facArr) {
+                    if (facArr != NULL && facArr.count > 0) {
+                        Facility* fac = (Facility*) facArr[0];
+                        self.userID = fac.user_id;
+                    } else {
+                        self.bLoginFirstTime = true;
+                    }
+                    completion(true, NULL);
+                }];
             }
         } else {
             NSLog(@"Login Error: %@, %@, %@", error, response, responseObject);
@@ -98,6 +107,7 @@ NSString* baseURL = @"https://dev3.storageauctions.net/block";
         if (!error) {
             NSLog(@"Reply JSON: %@", responseObject);
             if ([responseObject isKindOfClass:[NSDictionary class]]) {
+                self.userID = [self getIntFrom:(NSNumber*)[responseObject objectForKey:@"user_id"]];
                 completion(true, NULL);
             }
         } else {
@@ -164,8 +174,80 @@ NSString* baseURL = @"https://dev3.storageauctions.net/block";
             }
         } else {
             NSLog(@"Get All Facility Error: %@, %@, %@", error, response, responseObject);
-            // NSDictionary* errDic = (NSDictionary*)[((NSDictionary*)responseObject) objectForKey:@"errors"];
             completion(NULL);
+        }
+    }];
+}
+
+- (void) getAuctionDetail:(NSInteger) auctionID completion:(void (^)(BOOL bSuccess, Auction* auction, NSString* error)) completion {
+    NSString* urlStr = [NSString stringWithFormat:@"%@/auction/get/%ld", baseURL, auctionID];
+    NSURL *url = [[NSURL alloc]initWithString:urlStr];
+    
+    NSURLSession *session = [NSURLSession sharedSession];  //use NSURLSession class
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc]initWithURL:url];
+    
+    [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+    [request setValue:@"Basic ZGV2OnNhc2E=" forHTTPHeaderField:@"Authorization"];
+    
+    NSURLSessionDataTask* task = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+        if (!error) {
+            NSError* jsonError;
+            NSDictionary* jsonDic = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&jsonError];
+            Auction* auction = [self getAuctionFrom:jsonDic];
+            completion(true, auction, NULL);
+        } else {
+            NSLog(@"Get Auction Detail Error: %@, %@, %@", error, response, response);
+            completion(false, NULL, NULL);
+        }
+    }];
+    [task resume];
+}
+
+- (void) setAuction:(AuctionRequest*) request completion:(void (^)(BOOL bSuccess, Auction* auction, NSString* error)) completion  {
+    NSString* url = [baseURL stringByAppendingString:@"/auction/set"];
+    NSString* requestStr = NULL;
+    if (request.status == NULL || [request.status compare:@"6"] != NSOrderedSame) {
+        requestStr = [NSString stringWithFormat:@"amount_owed=%@&alt_unit_number=%@&reserve=%@&time_end=%@&terms=%@&prebid_close=%@&lock_tag=%@&fees=%@&batch_email=%@&cleanout_other=%@&payment=%@&time_st_zone=%@&cleanout=%@&access=%@&auction_type=%@&time_start=%@&facility_id=%@&unit_size=%@&descr=%@&unit_number=%@&time_end_zone=%@&save_terms=%@&payment_other=%@&tenant_name=%@&id=%@", request.amount_owed, request.alt_unit_number, request.reserve, request.time_end, request.terms, request.prebid_close, request.lock_tag, request.fees, request.batch_email, request.cleanout_other, request.payment, request.time_st_zone, request.cleanout, request.access, request.auction_type, request.time_start, request.facility_id, request.unit_size, request.descr, request.unit_number, request.time_end_zone, request.save_terms, request.payment_other, request.tenant_name, request.auct_id];
+    } else {
+        requestStr = [NSString stringWithFormat:@"amount_owed=%@&alt_unit_number=%@&reserve=%@&time_end=%@&terms=%@&prebid_close=%@&lock_tag=%@&fees=%@&batch_email=%@&cleanout_other=%@&payment=%@&time_st_zone=%@&cleanout=%@&access=%@&auction_type=%@&time_start=%@&facility_id=%@&unit_size=%@&descr=%@&unit_number=%@&time_end_zone=%@&save_terms=%@&payment_other=%@&tenant_name=%@&id=%@&status=%@", request.amount_owed, request.alt_unit_number, request.reserve, request.time_end, request.terms, request.prebid_close, request.lock_tag, request.fees, request.batch_email, request.cleanout_other, request.payment, request.time_st_zone, request.cleanout, request.access, request.auction_type, request.time_start, request.facility_id, request.unit_size, request.descr, request.unit_number, request.time_end_zone, request.save_terms, request.payment_other, request.tenant_name, request.auct_id, request.status];
+    }
+    
+    NSData* body = [self getDataFrom:requestStr];
+    [self postRequest:url body:body completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
+        if (!error) {
+            NSLog(@"Reply JSON: %@", responseObject);
+            if ([responseObject isKindOfClass:[NSDictionary class]]) {
+                
+                NSDictionary* dic = (NSDictionary*)responseObject;
+                Auction* auction = [self getAuctionFrom:dic];
+                completion(true, auction, NULL);
+            }
+        } else {
+            NSLog(@"Set Auction Error: %@, %@, %@", error, response, responseObject);
+            NSDictionary* errDic = (NSDictionary*)[((NSDictionary*)responseObject) objectForKey:@"errors"];
+            NSString* unitNumErrStr = [errDic objectForKey:@"unit_number"];
+            NSString* altUnitNumErrStr = [errDic objectForKey:@"alt_unit_number"];
+            NSString* timeEndErrStr = [errDic objectForKey:@"time_end"];
+            NSString* facilityIDErrStr = [errDic objectForKey:@"facility_id"];
+            NSString* unitSizeErrStr = [errDic objectForKey:@"unit_size"];
+            NSString* cleanOutErrStr = [errDic objectForKey:@"cleanout"];
+            NSString* accessErrStr = [errDic objectForKey:@"access"];
+            
+            if (unitNumErrStr.length > 0) {
+                completion(false, NULL, unitNumErrStr);
+            } else if (altUnitNumErrStr.length > 0) {
+                completion(false, NULL, altUnitNumErrStr);
+            } else if (timeEndErrStr.length > 0) {
+                completion(false, NULL, timeEndErrStr);
+            } else if (facilityIDErrStr.length > 0) {
+                completion(false, NULL, facilityIDErrStr);
+            } else if (unitSizeErrStr.length > 0) {
+                completion(false, NULL, unitSizeErrStr);
+            } else if (cleanOutErrStr.length > 0) {
+                completion(false, NULL, cleanOutErrStr);
+            } else if (accessErrStr.length > 0) {
+                completion(false, NULL, accessErrStr);
+            }
         }
     }];
 }
@@ -184,7 +266,7 @@ NSString* baseURL = @"https://dev3.storageauctions.net/block";
                 completion(true, auction, NULL);
             }
         } else {
-            NSLog(@"Add Facility Error: %@, %@, %@", error, response, responseObject);
+            NSLog(@"Create Auction Error: %@, %@, %@", error, response, responseObject);
             NSDictionary* errDic = (NSDictionary*)[((NSDictionary*)responseObject) objectForKey:@"errors"];
             NSString* unitNumErrStr = [errDic objectForKey:@"unit_number"];
             NSString* altUnitNumErrStr = [errDic objectForKey:@"alt_unit_number"];
@@ -224,7 +306,10 @@ NSString* baseURL = @"https://dev3.storageauctions.net/block";
                 for (NSInteger index = 0; index < dataArr.count; index++) {
                     NSDictionary* dic = [dataArr objectAtIndex:index];
                     Auction* auction = [self getAuctionFrom:dic];
-                    [aArr addObject:auction];
+                    if (auction.user_id == self.userID) {
+                        if (auction.status == 1 || auction.status == 88 || auction.status == 6 || auction.status == 7 || auction.status == 8)
+                            [aArr addObject:auction];
+                    }
                 }
                 completion(aArr);
             } else {
@@ -271,7 +356,7 @@ NSString* baseURL = @"https://dev3.storageauctions.net/block";
 -(void) deleteImage:(NSInteger) auctionID mediaID:(NSString*) mediaID completion:(void (^)(BOOL bSuccess, NSString* error)) completion {
     // NSData* body = [self getDataFrom:[NSString stringWithFormat:@"auction_id=%ld&id=%@", auctionID, mediaID]];
     NSData* body = [self getDataFrom:[NSString stringWithFormat:@"id=%@", mediaID]];
-    NSString* url = [baseURL stringByAppendingString:@"auction/media/delete"];
+    NSString* url = [baseURL stringByAppendingString:@"/auction/media/delete"];
     [self postRequest:url body:body completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
         if (!error) {
             NSLog(@"Reply JSON: %@", responseObject);
@@ -347,7 +432,7 @@ NSString* baseURL = @"https://dev3.storageauctions.net/block";
     auction.amount_owed = (NSString*)[dic objectForKey:@"amount_owed"];
     auction.fees = [self getFloatFrom:(NSNumber*)[dic objectForKey:@"fees"]];
     auction.tenant_name = (NSString*)[dic objectForKey:@"tenant_name"];
-    auction.unit_number = [self getIntFrom:(NSNumber*)[dic objectForKey:@"unit_number"]];
+    auction.unit_number = (NSString*)[dic objectForKey:@"unit_number"];
     auction.unit_size = [self getIntFrom:(NSNumber*)[dic objectForKey:@"unit_size"]];
     auction.lock_tag = (NSString*)[dic objectForKey:@"lock_tag"];
     auction.time_created = [self getDateFrom:(NSString*)[dic objectForKey:@"time_created"]];
@@ -411,7 +496,7 @@ NSString* baseURL = @"https://dev3.storageauctions.net/block";
     auction.source_id = (NSString*)[dic objectForKey:@"source_id"];
     auction.reserve = [self getFloatFrom:(NSNumber*)[dic objectForKey:@"reserve"]];
     auction.bid_schedule_id = [self getIntFrom:(NSNumber*)[dic objectForKey:@"bid_schedule_id"]];
-    auction.alt_unit_number = [self getIntFrom:(NSNumber*)[dic objectForKey:@"alt_unit_number"]];
+    auction.alt_unit_number = (NSString*)[dic objectForKey:@"alt_unit_number"];
     auction.batch_email = [self getIntFrom:(NSNumber*)[dic objectForKey:@"batch_email"]];
     auction.title = (NSString*)[dic objectForKey:@"title"];
     auction.facility_name = (NSString*)[dic objectForKey:@"facility_name"];
@@ -433,11 +518,41 @@ NSString* baseURL = @"https://dev3.storageauctions.net/block";
     auction.group = (NSString*)[dic objectForKey:@"group"];
     auction.type = (NSString*)[dic objectForKey:@"type"];
     auction.category = (NSString*)[dic objectForKey:@"category"];
+    auction.mediaArray = [self getAuctionMedia:(NSArray*)[dic objectForKey:@"all_media"]];
     
     return auction;
 }
 
--(NSData*) getDataFrom:(NSString*) str {
+- (NSMutableArray*) getAuctionMedia:(NSArray*) mediaDicArr {
+    if (mediaDicArr == NULL || mediaDicArr == [NSNull null] || [mediaDicArr isKindOfClass:[NSArray class]] != true) {
+        return NULL;
+    }
+    
+    NSMutableArray* array = [NSMutableArray array];
+    for (NSInteger index = 0; index < mediaDicArr.count; index++) {
+        NSDictionary* dic = (NSDictionary*) mediaDicArr[index];
+        AuctionMedia* media = [[AuctionMedia alloc] init];
+        media.mediaID = [self getIntFrom:(NSNumber*)[dic objectForKey:@"id"]];
+        media.type = (NSString*) [dic objectForKey:@"type"];
+        media.width0 = (NSString*) [dic objectForKey:@"width_0"];
+        media.height0 = (NSString*) [dic objectForKey:@"height_0"];
+        media.width1 = (NSString*) [dic objectForKey:@"width_1"];
+        media.height1 = (NSString*) [dic objectForKey:@"height_1"];
+        media.width2 = (NSString*) [dic objectForKey:@"width_2"];
+        media.height2 = (NSString*) [dic objectForKey:@"height_2"];
+        media.width3 = (NSString*) [dic objectForKey:@"width_3"];
+        media.height3 = (NSString*) [dic objectForKey:@"height_3"];
+        media.url0 = (NSString*) [dic objectForKey:@"photo_url_size0"];
+        media.url1 = (NSString*) [dic objectForKey:@"photo_url_size1"];
+        media.url2 = (NSString*) [dic objectForKey:@"photo_url_size2"];
+        media.url3 = (NSString*) [dic objectForKey:@"photo_url_size3"];
+        [array addObject:media];
+    }
+    
+    return array;
+}
+
+- (NSData*) getDataFrom:(NSString*) str {
     NSData* data = [str dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:true];
     return data;
 }
@@ -448,7 +563,7 @@ NSString* baseURL = @"https://dev3.storageauctions.net/block";
     else if (str == [NSNull null])
         return NULL;
     NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"yyyy-MM-dd hh:mm:ss"];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
     return [dateFormatter dateFromString:str];
 }
 

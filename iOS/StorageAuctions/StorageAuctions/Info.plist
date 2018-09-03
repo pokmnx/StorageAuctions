@@ -2,12 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>NSPhotoLibraryUsageDescription</key>
-	<string>For taking Auction Photos from Gallery</string>
-	<key>NSCameraUsageDescription</key>
-	<string>For taking Auction Photos from Camera</string>
-	<key>UIViewControllerBasedStatusBarAppearance</key>
-	<false/>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
@@ -26,6 +20,11 @@
 	<string>1.0</string>
 	<key>CFBundleVersion</key>
 	<string>1</string>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>googlechromes</string>
+		<string>comgooglemaps</string>
+	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSAppTransportSecurity</key>
@@ -33,6 +32,49 @@
 		<key>NSAllowsArbitraryLoads</key>
 		<true/>
 	</dict>
+	<key>NSCameraUsageDescription</key>
+	<string>For taking Auction Photos from Camera</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>For taking Auction Photos from Gallery</string>
+	<key>UIAppFonts</key>
+	<array>
+		<string>Raleway-Black.ttf</string>
+		<string>Raleway-BlackItalic.ttf</string>
+		<string>Raleway-Bold.ttf</string>
+		<string>Raleway-BoldItalic.ttf</string>
+		<string>Raleway-ExtraBold.ttf</string>
+		<string>Raleway-ExtraBoldItalic.ttf</string>
+		<string>Raleway-ExtraLight.ttf</string>
+		<string>Raleway-ExtraLightItalic.ttf</string>
+		<string>Raleway-Italic.ttf</string>
+		<string>Raleway-Light.ttf</string>
+		<string>Raleway-LightItalic.ttf</string>
+		<string>Raleway-Medium.ttf</string>
+		<string>Raleway-MediumItalic.ttf</string>
+		<string>Raleway-Regular.ttf</string>
+		<string>Raleway-SemiBold.ttf</string>
+		<string>Raleway-SemiBoldItalic.ttf</string>
+		<string>Raleway-Thin.ttf</string>
+		<string>Raleway-ThinItalic.ttf</string>
+		<string>Montserrat-Black.otf</string>
+		<string>Montserrat-BlackItalic.otf</string>
+		<string>Montserrat-Bold.otf</string>
+		<string>Montserrat-BoldItalic.otf</string>
+		<string>Montserrat-ExtraBold.otf</string>
+		<string>Montserrat-ExtraBoldItalic.otf</string>
+		<string>Montserrat-ExtraLight.otf</string>
+		<string>Montserrat-ExtraLightItalic.otf</string>
+		<string>Montserrat-Italic.otf</string>
+		<string>Montserrat-Light.otf</string>
+		<string>Montserrat-LightItalic.otf</string>
+		<string>Montserrat-Medium.otf</string>
+		<string>Montserrat-MediumItalic.otf</string>
+		<string>Montserrat-Regular.otf</string>
+		<string>Montserrat-SemiBold.otf</string>
+		<string>Montserrat-SemiBoldItalic.otf</string>
+		<string>Montserrat-Thin.otf</string>
+		<string>Montserrat-ThinItalic.otf</string>
+	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
@@ -51,10 +93,7 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-	<key>LSApplicationQueriesSchemes</key>
-	<array>
-		<string>googlechromes</string>
-		<string>comgooglemaps</string>
-	</array>
+	<key>UIViewControllerBasedStatusBarAppearance</key>
+	<false/>
 </dict>
 </plist>

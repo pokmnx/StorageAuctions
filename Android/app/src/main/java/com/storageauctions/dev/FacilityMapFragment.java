@@ -25,6 +25,7 @@ import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.storageauctions.dev.ServiceManager.ServiceManager;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -43,6 +44,7 @@ public class FacilityMapFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_facility_map, container, false);
 
+        TextView addressTitle = (TextView) view.findViewById(R.id.map_title);
         TextView addressView = (TextView) view.findViewById(R.id.map_address);
         addressView.setText(mAddress);
 
@@ -98,6 +100,9 @@ public class FacilityMapFragment extends Fragment {
             }
         });
 
+        ServiceManager.sharedManager().setTypeFace(getContext(), addressTitle, R.font.montserrat_medium);
+        ServiceManager.sharedManager().setTypeFace(getContext(), addressView, R.font.montserrat_extralight);
+        ServiceManager.sharedManager().setTypeFace(getContext(), contBtn, R.font.montserrat_bold);
 
         return view;
     }

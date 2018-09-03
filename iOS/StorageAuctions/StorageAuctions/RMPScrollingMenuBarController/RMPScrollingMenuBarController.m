@@ -47,7 +47,7 @@
     rect = CGRectMake(0, 0, self.view.bounds.size.width, kRMPMenuBarDefaultBarHeight);
     RMPScrollingMenuBar* menuBar = [[RMPScrollingMenuBar alloc] initWithFrame:rect];
     _menuBar = menuBar;
-    CGFloat offset = 32.0f / 320.0f * [[UIScreen mainScreen] bounds].size.width;
+    CGFloat offset = 12.0f / 320.0f * [[UIScreen mainScreen] bounds].size.width;
     _menuBar.itemInsets = UIEdgeInsetsMake(2, offset, 0, offset);
     [self.view addSubview:menuBar];
     [_menuBar sizeToFit];

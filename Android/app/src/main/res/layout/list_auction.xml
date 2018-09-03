@@ -27,7 +27,7 @@
         android:layout_marginTop="24dp"
         android:maxLines="4"
         android:text="Auction Title"
-        android:textSize="16sp"
+        android:textSize="14dp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/auction_cell_image"
@@ -44,62 +44,179 @@
         android:layout_marginTop="8dp"
         android:maxLines="4"
         android:text="TextView"
+        android:textSize="12dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/auction_cell_image"
         app:layout_constraintTop_toBottomOf="@+id/auction_cell_title" />
 
-    <TextView
-        android:id="@+id/auction_cell_view_count"
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/constraintLayout24"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="Views: 200"
         app:layout_constraintEnd_toEndOf="@+id/auction_cell_image"
         app:layout_constraintStart_toStartOf="@+id/auction_cell_image"
-        app:layout_constraintTop_toBottomOf="@+id/auction_cell_image" />
+        app:layout_constraintTop_toBottomOf="@+id/auction_cell_image">
 
-    <TextView
-        android:id="@+id/auction_cell_bid_count"
+        <TextView
+            android:id="@+id/view_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Views: "
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/auction_cell_view_count"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/auction_cell_view_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="200"
+            android:textSize="12dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </android.support.constraint.ConstraintLayout>
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/constraintLayout25"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="Bids: 4"
-        app:layout_constraintEnd_toEndOf="@+id/auction_cell_view_count"
-        app:layout_constraintStart_toStartOf="@+id/auction_cell_view_count"
-        app:layout_constraintTop_toBottomOf="@+id/auction_cell_view_count" />
+        app:layout_constraintEnd_toEndOf="@+id/auction_cell_image"
+        app:layout_constraintStart_toStartOf="@+id/auction_cell_image"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout24">
 
-    <TextView
-        android:id="@+id/auction_cell_time_left"
+        <TextView
+            android:id="@+id/bid_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Bids: "
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/auction_cell_bid_count"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/auction_cell_bid_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="4"
+            android:textSize="12dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </android.support.constraint.ConstraintLayout>
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/constraintLayout26"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="24dp"
         android:layout_marginRight="24dp"
-        android:text="Time: 7d Left"
-        app:layout_constraintBottom_toBottomOf="@+id/auction_cell_view_count"
+        app:layout_constraintBottom_toBottomOf="@+id/constraintLayout24"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <TextView
+            android:id="@+id/time_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Time: "
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/auction_cell_time_left"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/auction_cell_time_left"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="7d Left"
+            android:textSize="12dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </android.support.constraint.ConstraintLayout>
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/constraintLayout27"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="24dp"
+        android:layout_marginRight="24dp"
+        app:layout_constraintBottom_toBottomOf="@+id/constraintLayout25"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/auction_cell_view_count" />
+        app:layout_constraintTop_toTopOf="@+id/constraintLayout25">
 
-    <TextView
-        android:id="@+id/auction_cell_current_bid"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        <TextView
+            android:id="@+id/current_bid_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Current Bid: "
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/auction_cell_current_bid"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/auction_cell_current_bid"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="$200"
+            android:textSize="12dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </android.support.constraint.ConstraintLayout>
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/constraintLayout28"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="16dp"
         android:layout_marginEnd="24dp"
         android:layout_marginRight="24dp"
         android:layout_marginTop="8dp"
-        android:text="Current Bid: $200"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/auction_cell_time_left" />
-
-    <TextView
-        android:id="@+id/auction_cell_status"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="24dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginRight="24dp"
-        android:layout_marginTop="8dp"
-        android:text="Status: Upcoming"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/auction_cell_current_bid" />
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout27">
+
+        <TextView
+            android:id="@+id/status_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Status: "
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/auction_cell_status"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/auction_cell_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Upcoming"
+            android:textSize="12dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </android.support.constraint.ConstraintLayout>
+
+    <ImageButton
+        android:id="@+id/view_button"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:background="@android:color/transparent"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toBottomOf="@+id/constraintLayout28"
+        app:layout_constraintDimensionRatio="h,166:39"
+        app:layout_constraintEnd_toEndOf="@+id/auction_cell_image"
+        app:layout_constraintStart_toStartOf="@+id/auction_cell_image"
+        app:layout_constraintTop_toTopOf="@+id/constraintLayout28"
+        app:srcCompat="@drawable/view_button" />
 </android.support.constraint.ConstraintLayout>

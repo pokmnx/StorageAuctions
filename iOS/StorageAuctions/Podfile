@@ -15,5 +15,6 @@ target 'StorageAuctions' do
   	pod 'LMGeocoder'
     pod 'PopupDialog', '0.5.0'
     pod 'SDWebImage'
+    pod 'DateTools'
 
 end

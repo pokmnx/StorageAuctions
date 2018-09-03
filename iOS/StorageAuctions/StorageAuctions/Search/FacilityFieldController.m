@@ -27,12 +27,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    [_storageFacilityName setText:@"bobs storage"];
-    [_phoneNumber setText:@"1234567890"];
-    [_siteContactEmail setText:@"abc@gmail.com"];
-    [_taxRate setText:@"3"];
-    [_commission setText:@"6"];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -46,8 +40,8 @@
     [ProgressHUD show];
     [[ServiceManager sharedManager] addNewFacilityWith:_storageFacilityName.text email:_siteContactEmail.text website:@"" phone:_phoneNumber.text taxRate:taxRate commissionRate:commissionRate terms:@"" address:self.mapAddress completion:^(BOOL bSuccess, NSString* error) {
         [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-            [ProgressHUD dismiss];
             if (bSuccess == true) {
+                [ProgressHUD dismiss];
                 UIViewController *topController = [UIApplication sharedApplication].keyWindow.rootViewController;
                 while (topController.presentedViewController) {
                     topController = topController.presentedViewController;

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:local="http://schemas.android.com/apk/res-auto"
@@ -9,4 +10,48 @@
     local:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
     local:popupTheme="@style/ThemeOverlay.AppCompat.Light">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        >
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginEnd="64dp"
+                android:layout_marginRight="64dp"
+                android:src="@drawable/logo_top_nav_3"
+                local:layout_constraintBottom_toBottomOf="parent"
+                local:layout_constraintEnd_toStartOf="@+id/guideline3"
+                local:layout_constraintTop_toTopOf="parent" />
+
+            <android.support.constraint.Guideline
+                android:id="@+id/guideline3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                local:layout_constraintEnd_toEndOf="parent"
+                local:layout_constraintGuide_begin="182dp"
+                local:layout_constraintHorizontal_bias="0.5"
+                local:layout_constraintStart_toStartOf="parent" />
+
+            <ImageView
+                android:id="@+id/imageView3"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginRight="16dp"
+                local:layout_constraintEnd_toEndOf="parent"
+                local:srcCompat="@drawable/user_top_nav_3" />
+        </android.support.constraint.ConstraintLayout>
+
+    </LinearLayout>
+
+
 </android.support.v7.widget.Toolbar>
+

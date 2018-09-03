@@ -1,5 +1,6 @@
 package com.storageauctions.dev.ServiceManager;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 public class Auction {
@@ -17,7 +18,7 @@ public class Auction {
     public String amount_owed;
     public double fees;
     public String tenant_name;
-    public int unit_number;
+    public String unit_number;
     public int unit_size;
     public String lock_tag;
     public Date time_created;
@@ -36,7 +37,7 @@ public class Auction {
     public String source_id;
     public double reserve;
     public int bid_schedule_id;
-    public int alt_unit_number;
+    public String alt_unit_number;
     public int batch_email;
     public String title;
     public String facility_name;
@@ -58,4 +59,5 @@ public class Auction {
     public String group;
     public String type;
     public String category;
+    public ArrayList<AuctionMedia> mediaArray;
 }

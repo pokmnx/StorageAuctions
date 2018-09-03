@@ -74,11 +74,13 @@
                             app:layout_constraintTop_toTopOf="parent"
                             app:srcCompat="@drawable/auctioner_img" />
 
-                        <RadioButton
+                        <android.support.v7.widget.AppCompatRadioButton
                             android:id="@+id/auction_radio"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="8dp"
+                            android:textColorLink="@color/colorPrimaryDark"
+                            android:buttonTint="@color/colorPrimary"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintHorizontal_bias="0.5"
                             app:layout_constraintStart_toStartOf="parent"
@@ -129,11 +131,12 @@
                             app:layout_constraintTop_toTopOf="parent"
                             app:srcCompat="@drawable/owner_img" />
 
-                        <RadioButton
+                        <android.support.v7.widget.AppCompatRadioButton
                             android:id="@+id/facility_owner_radio"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="8dp"
+                            android:buttonTint="@color/colorPrimary"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintHorizontal_bias="0.5"
                             app:layout_constraintStart_toStartOf="parent"
@@ -254,7 +257,7 @@
                     app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/signup_phone"
-                    app:srcCompat="@drawable/login_btn" />
+                    app:srcCompat="@drawable/login" />
 
             </android.support.constraint.ConstraintLayout>
 

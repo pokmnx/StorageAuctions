@@ -19,6 +19,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *auctionStatus;
 @property (weak, nonatomic) IBOutlet UILabel *currentBidPrice;
 @property (weak, nonatomic) IBOutlet UILabel *time;
+@property (weak, nonatomic) IBOutlet UIButton *viewButton;
 
 
 @end

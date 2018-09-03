@@ -12,6 +12,9 @@
 #import "Auction.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "NewAuctionController.h"
+#import "MainTabBarController.h"
+#import "AuctionDetailController.h"
+#import "ProgressHUD.h"
 
 @interface AuctionListController () <UITableViewDataSource, UITableViewDelegate>
 
@@ -68,10 +71,12 @@
             cell.auctionStatus.text = @"CANCELED";
             break;
         case 7:
-            cell.auctionStatus.text = @"CANCELED PAID";
+            // cell.auctionStatus.text = @"CANCELED PAID";
+            cell.auctionStatus.text = @"CANCELED";
             break;
         case 8:
-            cell.auctionStatus.text = @"CANCELLED FAILED";
+            // cell.auctionStatus.text = @"CANCELLED FAILED";
+            cell.auctionStatus.text = @"CANCELLED";
             break;
         case 9:
             cell.auctionStatus.text = @"FAILED FINAL";
@@ -90,14 +95,54 @@
             break;
     }
     
+    [cell.viewButton addTarget:self action:@selector(viewDetail:) forControlEvents:UIControlEventTouchUpInside];
+    
     return cell;
 }
 
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    UINavigationController* navController = (UINavigationController*) self.sideMenuController.rootViewController;
-    NewAuctionController* controller = (NewAuctionController*) [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"newAuctionController"];
-    
-    [navController pushViewController:controller animated:TRUE];
+    Auction* auction = (Auction*)[self.auctionArr objectAtIndex:indexPath.row];
+    [self viewAuctionDetail:auction];
+}
+
+- (void) viewDetail:(id) sender {
+    UITableViewCell* cell = (UITableViewCell*)[[((UIButton*)sender) superview] superview];
+    NSIndexPath* indexPath = [self.auctionListView indexPathForCell:cell];
+    if (indexPath != NULL) {
+        Auction* auction = (Auction*)[self.auctionArr objectAtIndex:indexPath.row];
+        [self viewAuctionDetail:auction];
+    }
+}
+
+- (void) viewAuctionDetail:(Auction*) auction {
+    [ProgressHUD show];
+    [[ServiceManager sharedManager] getAuctionDetail:auction.auct_id completion:^(BOOL bSuccess, Auction* auct, NSString* error) {
+        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+            [ProgressHUD dismiss];
+            if (bSuccess == true) {
+                UIViewController *topController = [UIApplication sharedApplication].keyWindow.rootViewController;
+                while (topController.presentedViewController) {
+                    topController = topController.presentedViewController;
+                }
+                UINavigationController* navController = (UINavigationController*) ((LGSideMenuController*)topController).rootViewController;
+                NSArray* controllerArr = [navController viewControllers];
+                MainTabBarController* mainTabController = (MainTabBarController*) controllerArr[0];
+                NSArray* tabControllerArr = mainTabController.viewControllers;
+                
+                AuctionDetailController* detailController = (AuctionDetailController*)[[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"auctionDetailController"];
+                detailController.auction = auct;
+                
+                UITabBarItem* item = [[UITabBarItem alloc] initWithTitle:NULL image:[[UIImage imageNamed:@"auction_tab"] imageWithRenderingMode:UIImageRenderingModeAutomatic] selectedImage:[[UIImage imageNamed:@"auction_tab"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
+                item.imageInsets = UIEdgeInsetsMake(6, 0, -6, 0);
+                [detailController setTabBarItem:item];
+                
+                [mainTabController setViewControllers:@[tabControllerArr[0], detailController, tabControllerArr[2]] animated:false];
+                [mainTabController setSelectedIndex:1];
+            } else {
+                [ProgressHUD showError:@"Failed to Load Auction Data"];
+            }
+        }];
+    }];
 }
 
 - (NSInteger) getDifferenceDate:(NSDate*) endDate {
@@ -115,7 +160,7 @@
 }
 
 - (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 200;
+    return 225;
 }
 
 - (void)didReceiveMemoryWarning {

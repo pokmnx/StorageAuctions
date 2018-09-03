@@ -8,6 +8,24 @@
 
 /* Begin PBXBuildFile section */
 		4FFE926B4466E71B18BB4F03 /* Pods_StorageAuctions.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7616A6C80EB9A74FFF2C6526 /* Pods_StorageAuctions.framework */; };
+		800C5BE8211E0581004E56F9 /* Montserrat-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = 800C5BC3211E0581004E56F9 /* Montserrat-Black.otf */; };
+		800C5BE9211E0581004E56F9 /* Montserrat-BlackItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 800C5BC4211E0581004E56F9 /* Montserrat-BlackItalic.otf */; };
+		800C5BEA211E0581004E56F9 /* Montserrat-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 800C5BC5211E0581004E56F9 /* Montserrat-Bold.otf */; };
+		800C5BEB211E0581004E56F9 /* Montserrat-BoldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 800C5BC6211E0581004E56F9 /* Montserrat-BoldItalic.otf */; };
+		800C5BEC211E0581004E56F9 /* Montserrat-ExtraBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 800C5BC7211E0581004E56F9 /* Montserrat-ExtraBold.otf */; };
+		800C5BED211E0581004E56F9 /* Montserrat-ExtraBoldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 800C5BC8211E0581004E56F9 /* Montserrat-ExtraBoldItalic.otf */; };
+		800C5BEE211E0581004E56F9 /* Montserrat-ExtraLight.otf in Resources */ = {isa = PBXBuildFile; fileRef = 800C5BC9211E0581004E56F9 /* Montserrat-ExtraLight.otf */; };
+		800C5BEF211E0581004E56F9 /* Montserrat-ExtraLightItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 800C5BCA211E0581004E56F9 /* Montserrat-ExtraLightItalic.otf */; };
+		800C5BF0211E0581004E56F9 /* Montserrat-Italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 800C5BCB211E0581004E56F9 /* Montserrat-Italic.otf */; };
+		800C5BF1211E0581004E56F9 /* Montserrat-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 800C5BCC211E0581004E56F9 /* Montserrat-Light.otf */; };
+		800C5BF2211E0581004E56F9 /* Montserrat-LightItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 800C5BCD211E0581004E56F9 /* Montserrat-LightItalic.otf */; };
+		800C5BF3211E0581004E56F9 /* Montserrat-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 800C5BCE211E0581004E56F9 /* Montserrat-Medium.otf */; };
+		800C5BF4211E0581004E56F9 /* Montserrat-MediumItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 800C5BCF211E0581004E56F9 /* Montserrat-MediumItalic.otf */; };
+		800C5BF5211E0581004E56F9 /* Montserrat-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 800C5BD0211E0581004E56F9 /* Montserrat-Regular.otf */; };
+		800C5BF6211E0581004E56F9 /* Montserrat-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 800C5BD1211E0581004E56F9 /* Montserrat-SemiBold.otf */; };
+		800C5BF7211E0581004E56F9 /* Montserrat-SemiBoldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 800C5BD2211E0581004E56F9 /* Montserrat-SemiBoldItalic.otf */; };
+		800C5BF8211E0581004E56F9 /* Montserrat-Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = 800C5BD3211E0581004E56F9 /* Montserrat-Thin.otf */; };
+		800C5BF9211E0581004E56F9 /* Montserrat-ThinItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 800C5BD4211E0581004E56F9 /* Montserrat-ThinItalic.otf */; };
 		802D431220D5911000E37AA1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 802D431120D5911000E37AA1 /* main.m */; };
 		802D431520D5911000E37AA1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 802D431420D5911000E37AA1 /* AppDelegate.m */; };
 		802D431B20D5911000E37AA1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 802D431920D5911000E37AA1 /* Main.storyboard */; };
@@ -21,6 +39,25 @@
 		8036042420E3893900F8239C /* RMPScrollingMenuBarControllerTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 8036041B20E3893900F8239C /* RMPScrollingMenuBarControllerTransition.m */; };
 		8036042520E3893900F8239C /* RMPScrollingMenuBarItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 8036041D20E3893900F8239C /* RMPScrollingMenuBarItem.m */; };
 		8036042620E3893900F8239C /* UIViewController+RMPScrollingMenuBarControllerHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 8036041F20E3893900F8239C /* UIViewController+RMPScrollingMenuBarControllerHelper.m */; };
+		80364F902130FB580042EE04 /* Raleway-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 80364F7E2130FB580042EE04 /* Raleway-Black.ttf */; };
+		80364F912130FB580042EE04 /* Raleway-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 80364F7F2130FB580042EE04 /* Raleway-BlackItalic.ttf */; };
+		80364F922130FB580042EE04 /* Raleway-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 80364F802130FB580042EE04 /* Raleway-Bold.ttf */; };
+		80364F932130FB580042EE04 /* Raleway-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 80364F812130FB580042EE04 /* Raleway-BoldItalic.ttf */; };
+		80364F942130FB580042EE04 /* Raleway-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 80364F822130FB580042EE04 /* Raleway-ExtraBold.ttf */; };
+		80364F952130FB580042EE04 /* Raleway-ExtraBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 80364F832130FB580042EE04 /* Raleway-ExtraBoldItalic.ttf */; };
+		80364F962130FB580042EE04 /* Raleway-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 80364F842130FB580042EE04 /* Raleway-ExtraLight.ttf */; };
+		80364F972130FB580042EE04 /* Raleway-ExtraLightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 80364F852130FB580042EE04 /* Raleway-ExtraLightItalic.ttf */; };
+		80364F982130FB580042EE04 /* Raleway-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 80364F862130FB580042EE04 /* Raleway-Italic.ttf */; };
+		80364F992130FB580042EE04 /* Raleway-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 80364F872130FB580042EE04 /* Raleway-Light.ttf */; };
+		80364F9A2130FB580042EE04 /* Raleway-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 80364F882130FB580042EE04 /* Raleway-LightItalic.ttf */; };
+		80364F9B2130FB580042EE04 /* Raleway-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 80364F892130FB580042EE04 /* Raleway-Medium.ttf */; };
+		80364F9C2130FB580042EE04 /* Raleway-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 80364F8A2130FB580042EE04 /* Raleway-MediumItalic.ttf */; };
+		80364F9D2130FB580042EE04 /* Raleway-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 80364F8B2130FB580042EE04 /* Raleway-Regular.ttf */; };
+		80364F9E2130FB580042EE04 /* Raleway-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 80364F8C2130FB580042EE04 /* Raleway-SemiBold.ttf */; };
+		80364F9F2130FB580042EE04 /* Raleway-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 80364F8D2130FB580042EE04 /* Raleway-SemiBoldItalic.ttf */; };
+		80364FA02130FB580042EE04 /* Raleway-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 80364F8E2130FB580042EE04 /* Raleway-Thin.ttf */; };
+		80364FA12130FB580042EE04 /* Raleway-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 80364F8F2130FB580042EE04 /* Raleway-ThinItalic.ttf */; };
+		8038745921256CEC006A0CF2 /* AuctionMedia.m in Sources */ = {isa = PBXBuildFile; fileRef = 8038745821256CEC006A0CF2 /* AuctionMedia.m */; };
 		803E48BE20E4712E00FD3EB8 /* AuctionListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 803E48BD20E4712E00FD3EB8 /* AuctionListController.m */; };
 		803E48C120E4719700FD3EB8 /* AuctionListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 803E48C020E4719700FD3EB8 /* AuctionListCell.m */; };
 		803E48C420E4776200FD3EB8 /* Auction.m in Sources */ = {isa = PBXBuildFile; fileRef = 803E48C320E4776200FD3EB8 /* Auction.m */; };
@@ -50,6 +87,24 @@
 /* Begin PBXFileReference section */
 		7616A6C80EB9A74FFF2C6526 /* Pods_StorageAuctions.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StorageAuctions.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7E268679D22DAE600404C058 /* Pods-StorageAuctions.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StorageAuctions.debug.xcconfig"; path = "Pods/Target Support Files/Pods-StorageAuctions/Pods-StorageAuctions.debug.xcconfig"; sourceTree = "<group>"; };
+		800C5BC3211E0581004E56F9 /* Montserrat-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Black.otf"; sourceTree = "<group>"; };
+		800C5BC4211E0581004E56F9 /* Montserrat-BlackItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-BlackItalic.otf"; sourceTree = "<group>"; };
+		800C5BC5211E0581004E56F9 /* Montserrat-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Bold.otf"; sourceTree = "<group>"; };
+		800C5BC6211E0581004E56F9 /* Montserrat-BoldItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-BoldItalic.otf"; sourceTree = "<group>"; };
+		800C5BC7211E0581004E56F9 /* Montserrat-ExtraBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-ExtraBold.otf"; sourceTree = "<group>"; };
+		800C5BC8211E0581004E56F9 /* Montserrat-ExtraBoldItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-ExtraBoldItalic.otf"; sourceTree = "<group>"; };
+		800C5BC9211E0581004E56F9 /* Montserrat-ExtraLight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-ExtraLight.otf"; sourceTree = "<group>"; };
+		800C5BCA211E0581004E56F9 /* Montserrat-ExtraLightItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-ExtraLightItalic.otf"; sourceTree = "<group>"; };
+		800C5BCB211E0581004E56F9 /* Montserrat-Italic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Italic.otf"; sourceTree = "<group>"; };
+		800C5BCC211E0581004E56F9 /* Montserrat-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Light.otf"; sourceTree = "<group>"; };
+		800C5BCD211E0581004E56F9 /* Montserrat-LightItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-LightItalic.otf"; sourceTree = "<group>"; };
+		800C5BCE211E0581004E56F9 /* Montserrat-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Medium.otf"; sourceTree = "<group>"; };
+		800C5BCF211E0581004E56F9 /* Montserrat-MediumItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-MediumItalic.otf"; sourceTree = "<group>"; };
+		800C5BD0211E0581004E56F9 /* Montserrat-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Regular.otf"; sourceTree = "<group>"; };
+		800C5BD1211E0581004E56F9 /* Montserrat-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-SemiBold.otf"; sourceTree = "<group>"; };
+		800C5BD2211E0581004E56F9 /* Montserrat-SemiBoldItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-SemiBoldItalic.otf"; sourceTree = "<group>"; };
+		800C5BD3211E0581004E56F9 /* Montserrat-Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Thin.otf"; sourceTree = "<group>"; };
+		800C5BD4211E0581004E56F9 /* Montserrat-ThinItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-ThinItalic.otf"; sourceTree = "<group>"; };
 		802D430D20D5911000E37AA1 /* StorageAuctions.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StorageAuctions.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		802D431120D5911000E37AA1 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		802D431320D5911000E37AA1 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -74,6 +129,26 @@
 		8036041D20E3893900F8239C /* RMPScrollingMenuBarItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMPScrollingMenuBarItem.m; sourceTree = "<group>"; };
 		8036041E20E3893900F8239C /* UIViewController+RMPScrollingMenuBarControllerHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+RMPScrollingMenuBarControllerHelper.h"; sourceTree = "<group>"; };
 		8036041F20E3893900F8239C /* UIViewController+RMPScrollingMenuBarControllerHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+RMPScrollingMenuBarControllerHelper.m"; sourceTree = "<group>"; };
+		80364F7E2130FB580042EE04 /* Raleway-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Raleway-Black.ttf"; sourceTree = "<group>"; };
+		80364F7F2130FB580042EE04 /* Raleway-BlackItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Raleway-BlackItalic.ttf"; sourceTree = "<group>"; };
+		80364F802130FB580042EE04 /* Raleway-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Raleway-Bold.ttf"; sourceTree = "<group>"; };
+		80364F812130FB580042EE04 /* Raleway-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Raleway-BoldItalic.ttf"; sourceTree = "<group>"; };
+		80364F822130FB580042EE04 /* Raleway-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Raleway-ExtraBold.ttf"; sourceTree = "<group>"; };
+		80364F832130FB580042EE04 /* Raleway-ExtraBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Raleway-ExtraBoldItalic.ttf"; sourceTree = "<group>"; };
+		80364F842130FB580042EE04 /* Raleway-ExtraLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Raleway-ExtraLight.ttf"; sourceTree = "<group>"; };
+		80364F852130FB580042EE04 /* Raleway-ExtraLightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Raleway-ExtraLightItalic.ttf"; sourceTree = "<group>"; };
+		80364F862130FB580042EE04 /* Raleway-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Raleway-Italic.ttf"; sourceTree = "<group>"; };
+		80364F872130FB580042EE04 /* Raleway-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Raleway-Light.ttf"; sourceTree = "<group>"; };
+		80364F882130FB580042EE04 /* Raleway-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Raleway-LightItalic.ttf"; sourceTree = "<group>"; };
+		80364F892130FB580042EE04 /* Raleway-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Raleway-Medium.ttf"; sourceTree = "<group>"; };
+		80364F8A2130FB580042EE04 /* Raleway-MediumItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Raleway-MediumItalic.ttf"; sourceTree = "<group>"; };
+		80364F8B2130FB580042EE04 /* Raleway-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Raleway-Regular.ttf"; sourceTree = "<group>"; };
+		80364F8C2130FB580042EE04 /* Raleway-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Raleway-SemiBold.ttf"; sourceTree = "<group>"; };
+		80364F8D2130FB580042EE04 /* Raleway-SemiBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Raleway-SemiBoldItalic.ttf"; sourceTree = "<group>"; };
+		80364F8E2130FB580042EE04 /* Raleway-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Raleway-Thin.ttf"; sourceTree = "<group>"; };
+		80364F8F2130FB580042EE04 /* Raleway-ThinItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Raleway-ThinItalic.ttf"; sourceTree = "<group>"; };
+		8038745721256CEC006A0CF2 /* AuctionMedia.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuctionMedia.h; sourceTree = "<group>"; };
+		8038745821256CEC006A0CF2 /* AuctionMedia.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuctionMedia.m; sourceTree = "<group>"; };
 		803E48BC20E4712E00FD3EB8 /* AuctionListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuctionListController.h; sourceTree = "<group>"; };
 		803E48BD20E4712E00FD3EB8 /* AuctionListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuctionListController.m; sourceTree = "<group>"; };
 		803E48BF20E4719700FD3EB8 /* AuctionListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuctionListCell.h; sourceTree = "<group>"; };
@@ -154,6 +229,49 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		800C5BC2211E0581004E56F9 /* font */ = {
+			isa = PBXGroup;
+			children = (
+				80364F7E2130FB580042EE04 /* Raleway-Black.ttf */,
+				80364F7F2130FB580042EE04 /* Raleway-BlackItalic.ttf */,
+				80364F802130FB580042EE04 /* Raleway-Bold.ttf */,
+				80364F812130FB580042EE04 /* Raleway-BoldItalic.ttf */,
+				80364F822130FB580042EE04 /* Raleway-ExtraBold.ttf */,
+				80364F832130FB580042EE04 /* Raleway-ExtraBoldItalic.ttf */,
+				80364F842130FB580042EE04 /* Raleway-ExtraLight.ttf */,
+				80364F852130FB580042EE04 /* Raleway-ExtraLightItalic.ttf */,
+				80364F862130FB580042EE04 /* Raleway-Italic.ttf */,
+				80364F872130FB580042EE04 /* Raleway-Light.ttf */,
+				80364F882130FB580042EE04 /* Raleway-LightItalic.ttf */,
+				80364F892130FB580042EE04 /* Raleway-Medium.ttf */,
+				80364F8A2130FB580042EE04 /* Raleway-MediumItalic.ttf */,
+				80364F8B2130FB580042EE04 /* Raleway-Regular.ttf */,
+				80364F8C2130FB580042EE04 /* Raleway-SemiBold.ttf */,
+				80364F8D2130FB580042EE04 /* Raleway-SemiBoldItalic.ttf */,
+				80364F8E2130FB580042EE04 /* Raleway-Thin.ttf */,
+				80364F8F2130FB580042EE04 /* Raleway-ThinItalic.ttf */,
+				800C5BC3211E0581004E56F9 /* Montserrat-Black.otf */,
+				800C5BC4211E0581004E56F9 /* Montserrat-BlackItalic.otf */,
+				800C5BC5211E0581004E56F9 /* Montserrat-Bold.otf */,
+				800C5BC6211E0581004E56F9 /* Montserrat-BoldItalic.otf */,
+				800C5BC7211E0581004E56F9 /* Montserrat-ExtraBold.otf */,
+				800C5BC8211E0581004E56F9 /* Montserrat-ExtraBoldItalic.otf */,
+				800C5BC9211E0581004E56F9 /* Montserrat-ExtraLight.otf */,
+				800C5BCA211E0581004E56F9 /* Montserrat-ExtraLightItalic.otf */,
+				800C5BCB211E0581004E56F9 /* Montserrat-Italic.otf */,
+				800C5BCC211E0581004E56F9 /* Montserrat-Light.otf */,
+				800C5BCD211E0581004E56F9 /* Montserrat-LightItalic.otf */,
+				800C5BCE211E0581004E56F9 /* Montserrat-Medium.otf */,
+				800C5BCF211E0581004E56F9 /* Montserrat-MediumItalic.otf */,
+				800C5BD0211E0581004E56F9 /* Montserrat-Regular.otf */,
+				800C5BD1211E0581004E56F9 /* Montserrat-SemiBold.otf */,
+				800C5BD2211E0581004E56F9 /* Montserrat-SemiBoldItalic.otf */,
+				800C5BD3211E0581004E56F9 /* Montserrat-Thin.otf */,
+				800C5BD4211E0581004E56F9 /* Montserrat-ThinItalic.otf */,
+			);
+			path = font;
+			sourceTree = "<group>";
+		};
 		802D430420D5911000E37AA1 = {
 			isa = PBXGroup;
 			children = (
@@ -175,6 +293,7 @@
 		802D430F20D5911000E37AA1 /* StorageAuctions */ = {
 			isa = PBXGroup;
 			children = (
+				800C5BC2211E0581004E56F9 /* font */,
 				8036041120E3892900F8239C /* Library */,
 				80E6FC9520D97B2700CA1FE2 /* Auction */,
 				80E6FC9620D97B2700CA1FE2 /* Home */,
@@ -259,6 +378,8 @@
 				803E48C320E4776200FD3EB8 /* Auction.m */,
 				803E48C520E4788B00FD3EB8 /* AuctionMeta.h */,
 				803E48C620E4788B00FD3EB8 /* AuctionMeta.m */,
+				8038745721256CEC006A0CF2 /* AuctionMedia.h */,
+				8038745821256CEC006A0CF2 /* AuctionMedia.m */,
 			);
 			path = ServiceManager;
 			sourceTree = "<group>";
@@ -376,9 +497,45 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				800C5BEC211E0581004E56F9 /* Montserrat-ExtraBold.otf in Resources */,
+				800C5BF3211E0581004E56F9 /* Montserrat-Medium.otf in Resources */,
+				80364F932130FB580042EE04 /* Raleway-BoldItalic.ttf in Resources */,
+				80364F9A2130FB580042EE04 /* Raleway-LightItalic.ttf in Resources */,
+				800C5BE8211E0581004E56F9 /* Montserrat-Black.otf in Resources */,
+				80364FA02130FB580042EE04 /* Raleway-Thin.ttf in Resources */,
+				800C5BF6211E0581004E56F9 /* Montserrat-SemiBold.otf in Resources */,
+				800C5BED211E0581004E56F9 /* Montserrat-ExtraBoldItalic.otf in Resources */,
+				800C5BF8211E0581004E56F9 /* Montserrat-Thin.otf in Resources */,
 				802D432020D5911000E37AA1 /* LaunchScreen.storyboard in Resources */,
+				80364F9F2130FB580042EE04 /* Raleway-SemiBoldItalic.ttf in Resources */,
+				80364F9E2130FB580042EE04 /* Raleway-SemiBold.ttf in Resources */,
+				80364F922130FB580042EE04 /* Raleway-Bold.ttf in Resources */,
+				800C5BF4211E0581004E56F9 /* Montserrat-MediumItalic.otf in Resources */,
+				800C5BF1211E0581004E56F9 /* Montserrat-Light.otf in Resources */,
+				800C5BEF211E0581004E56F9 /* Montserrat-ExtraLightItalic.otf in Resources */,
+				80364F962130FB580042EE04 /* Raleway-ExtraLight.ttf in Resources */,
+				80364F902130FB580042EE04 /* Raleway-Black.ttf in Resources */,
+				800C5BEE211E0581004E56F9 /* Montserrat-ExtraLight.otf in Resources */,
+				800C5BF9211E0581004E56F9 /* Montserrat-ThinItalic.otf in Resources */,
+				80364F982130FB580042EE04 /* Raleway-Italic.ttf in Resources */,
+				800C5BF0211E0581004E56F9 /* Montserrat-Italic.otf in Resources */,
+				80364F9B2130FB580042EE04 /* Raleway-Medium.ttf in Resources */,
+				80364FA12130FB580042EE04 /* Raleway-ThinItalic.ttf in Resources */,
+				80364F912130FB580042EE04 /* Raleway-BlackItalic.ttf in Resources */,
 				802D431D20D5911000E37AA1 /* Assets.xcassets in Resources */,
+				80364F942130FB580042EE04 /* Raleway-ExtraBold.ttf in Resources */,
+				800C5BF5211E0581004E56F9 /* Montserrat-Regular.otf in Resources */,
+				800C5BE9211E0581004E56F9 /* Montserrat-BlackItalic.otf in Resources */,
+				800C5BEB211E0581004E56F9 /* Montserrat-BoldItalic.otf in Resources */,
 				802D431B20D5911000E37AA1 /* Main.storyboard in Resources */,
+				800C5BEA211E0581004E56F9 /* Montserrat-Bold.otf in Resources */,
+				80364F972130FB580042EE04 /* Raleway-ExtraLightItalic.ttf in Resources */,
+				800C5BF2211E0581004E56F9 /* Montserrat-LightItalic.otf in Resources */,
+				800C5BF7211E0581004E56F9 /* Montserrat-SemiBoldItalic.otf in Resources */,
+				80364F9D2130FB580042EE04 /* Raleway-Regular.ttf in Resources */,
+				80364F952130FB580042EE04 /* Raleway-ExtraBoldItalic.ttf in Resources */,
+				80364F992130FB580042EE04 /* Raleway-Light.ttf in Resources */,
+				80364F9C2130FB580042EE04 /* Raleway-MediumItalic.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -393,6 +550,7 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-StorageAuctions/Pods-StorageAuctions-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework",
+				"${BUILT_PRODUCTS_DIR}/DateTools/DateTools.framework",
 				"${BUILT_PRODUCTS_DIR}/IQKeyboardManager/IQKeyboardManager.framework",
 				"${BUILT_PRODUCTS_DIR}/LGSideMenuController/LGSideMenuController.framework",
 				"${BUILT_PRODUCTS_DIR}/LMGeocoder/LMGeocoder.framework",
@@ -403,6 +561,7 @@
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AFNetworking.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DateTools.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManager.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/LGSideMenuController.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/LMGeocoder.framework",
@@ -445,8 +604,7 @@
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleMaps.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GooglePlaces.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -489,6 +647,7 @@
 				80E6FC9420D9727C00CA1FE2 /* MainTabBarController.m in Sources */,
 				8097B69520DAFB59006E5A2C /* NewAuctionController.m in Sources */,
 				8036040D20E2C9A600F8239C /* InfoPopupController.m in Sources */,
+				8038745921256CEC006A0CF2 /* AuctionMedia.m in Sources */,
 				8036041020E2DF8A00F8239C /* AuctionRequest.m in Sources */,
 				80E6FC9A20D97B3D00CA1FE2 /* HomeController.m in Sources */,
 				802D431220D5911000E37AA1 /* main.m in Sources */,

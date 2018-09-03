@@ -62,7 +62,7 @@
 
 - (void)menuBarController:(RMPScrollingMenuBarController*)menuBarController didSelectViewController:(UIViewController*)viewController {
     NSLog(@"selected index - %ld", menuBarController.selectedIndex);
-    NSArray* filterNum = @[@(-1), @(1), @(88), @(6)];
+    NSArray* filterNum = @[@(-1), @(1), @(88), @(7)];
     // NSArray* filterNum = @[@(-1), @(3), @(4), @(0)];
     NSInteger index = menuBarController.selectedIndex;
     AuctionListController* controller = (AuctionListController*) viewController;
@@ -71,8 +71,14 @@
         controller.auctionArr = [NSMutableArray array];
         for (NSInteger aInd = 0; aInd < [ServiceManager sharedManager].auctionArr.count; aInd++) {
             Auction* auction = [[ServiceManager sharedManager].auctionArr objectAtIndex:aInd];
-            if (auction.status == status) {
-                [controller.auctionArr addObject:auction];
+            if (index < 3) {
+                if (auction.status == status) {
+                    [controller.auctionArr addObject:auction];
+                }
+            } else {
+                if (auction.status == 6 || auction.status == 7 || auction.status == 8) {
+                    [controller.auctionArr addObject:auction];
+                }
             }
         }
         [controller.auctionListView reloadData];

@@ -11,6 +11,7 @@
 #import "UIViewController+LGSideMenuController.h"
 #import "MainTabBarController.h"
 #import "HomeController.h"
+#import "AuctionController.h"
 
 @interface MenuController ()
 
@@ -57,6 +58,19 @@
         UINavigationController* navController = (UINavigationController*) ((LGSideMenuController*)topController).rootViewController;
         NSArray* controllerArr = [navController viewControllers];
         MainTabBarController* mainTabController = (MainTabBarController*) controllerArr[0];
+        
+        
+        if ([mainTabController.viewControllers[1] isKindOfClass:[AuctionController class]] == false) {
+            AuctionController* auctionController = (AuctionController*) [[UIStoryboard storyboardWithName:@"Main" bundle:NULL] instantiateViewControllerWithIdentifier:@"auctionController"];
+            
+            UITabBarItem* item = [[UITabBarItem alloc] initWithTitle:NULL image:[[UIImage imageNamed:@"auction_tab"] imageWithRenderingMode:UIImageRenderingModeAutomatic] selectedImage:[[UIImage imageNamed:@"auction_tab"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
+            item.imageInsets = UIEdgeInsetsMake(6, 0, -6, 0);
+            [auctionController setTabBarItem:item];
+            
+            NSArray* array = @[mainTabController.viewControllers[0], auctionController, mainTabController.viewControllers[2]];
+            [mainTabController setViewControllers:array];
+        }
+        
         [mainTabController setSelectedIndex:1];
         [navController popToViewController:mainTabController animated:TRUE];
     }];

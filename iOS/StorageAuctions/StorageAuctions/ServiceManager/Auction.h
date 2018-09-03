@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "AuctionMeta.h"
+#import "AuctionMedia.h"
 
 
 @interface Auction : NSObject
@@ -25,7 +26,7 @@
 @property (nonatomic) NSString* amount_owed;
 @property (nonatomic) float fees;
 @property (nonatomic) NSString* tenant_name;
-@property (nonatomic) NSInteger unit_number;
+@property (nonatomic) NSString* unit_number;
 @property (nonatomic) NSInteger unit_size;
 @property (nonatomic) NSString* lock_tag;
 @property (nonatomic) NSDate* time_created;
@@ -44,7 +45,7 @@
 @property (nonatomic) NSString* source_id;
 @property (nonatomic) float reserve;
 @property (nonatomic) NSInteger bid_schedule_id;
-@property (nonatomic) NSInteger alt_unit_number;
+@property (nonatomic) NSString* alt_unit_number;
 @property (nonatomic) NSInteger batch_email;
 @property (nonatomic) NSString* title;
 @property (nonatomic) NSString* facility_name;
@@ -66,5 +67,6 @@
 @property (nonatomic) NSString* group;
 @property (nonatomic) NSString* type;
 @property (nonatomic) NSString* category;
+@property (nonatomic) NSMutableArray<AuctionMedia *>* mediaArray;
 
 @end
