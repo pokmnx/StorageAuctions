@@ -117,8 +117,8 @@
     
     AuctionRequest* request = [[AuctionRequest alloc] init];
     request.amount_owed = self.auction.amount_owed;
-    request.alt_unit_number = [NSString stringWithFormat:@"%ld", self.auction.alt_unit_number];
-    request.reserve = [NSString stringWithFormat:@"%f", self.auction.reserve];
+    request.alt_unit_number = self.auction.alt_unit_number;
+    request.reserve = [NSString stringWithFormat:@"%g", self.auction.reserve];
     
     NSDateFormatter* formatter2 = [[NSDateFormatter alloc] init];
     [formatter2 setDateFormat:@"yyyy-M-d"];
@@ -129,7 +129,7 @@
     request.time_end = [formatter2 stringFromDate:self.auction.time_end];
     request.terms = self.auction.terms;
     request.lock_tag = self.auction.lock_tag;
-    request.fees = [NSString stringWithFormat:@"%f", self.auction.fees];
+    request.fees = [NSString stringWithFormat:@"%g", self.auction.fees];
     request.batch_email = [NSString stringWithFormat:@"%ld", self.auction.batch_email];
     if (self.auction.meta != NULL) {
         request.cleanout = [NSString stringWithFormat:@"%ld", self.auction.meta.cleanout];
@@ -142,14 +142,13 @@
     request.facility_id = [NSString stringWithFormat:@"%ld", self.auction.facility_id];
     request.unit_size = [NSString stringWithFormat:@"%ld", self.auction.unit_size];
     request.descr = self.auction.description;
-    request.unit_number = [NSString stringWithFormat:@"%ld", self.auction.unit_number];
+    request.unit_number = self.auction.unit_number;
     request.time_end_zone = self.auction.time_end_zone;
     request.tenant_name = self.auction.tenant_name;
     
     request.access = @"";
     request.auction_type = @"0";
     request.save_terms = @"0";
-    request.reserve = @"0";
     request.payment = @"15";
     request.auct_id = [NSString stringWithFormat:@"%ld", _auction.auct_id];
     
